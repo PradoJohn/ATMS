@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block content %}    
+<div class="d-flex justify-content-start">
+    <div class="h3">Main Records</div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-folder me-2"></i>ATMS Admin
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'all_records' %}">Main Records</a></li>
+                    <li><a class="dropdown-item" href="{% url 'location' %}">Location</a></li>
+                    <li><a class="dropdown-item" href="{% url 'road' %}">Road</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'add_location' %}">Add Records</a></li>
+                </ul>
+            </li>
+    <hr> 
+</div>
+<div class="h5">GPS Sensors Coloration description list indicating:</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="col-xxl-8">
+            <table class="table table-striped">
+                <th>
+                    <tr>
+                        <td>RECORD ID</td>
+                        <td>ROAD ID</td>
+                        <td>LOCATION ID</td>
+                        <td>VEHICLE ID</td>
+                        <td>DATE - TIME</td>
+                        <td>INTENSITY</td>
+                        <td>HANDLE</td>
+                    </tr>
+                </th>
+                {% for x in record %}
+                <tr>
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.road_id }}</td>
+                    <td>{{ x.location_id }}</td>
+                    <td>{{ x.vehicle_id }}</td>
+                    <td>{{ x.time_date }}</td>
+                    <td>{{ x.intensity }}</td>
+                    <td><a href="delete/{{ x.id }}">delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+{% endblock %} 

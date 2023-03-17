@@ -1,0 +1,42 @@
+{% extends 'login_base.html' %}
+
+{% block content %}
+    {% if messages %}
+            {% for message in messages %}
+            
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+    {% endif %}
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card l-bg-green-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+    
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  
+                  <h2 class="fw-bold mb-2 text-uppercase">Advance Traffic Management Service</h2>
+                  <p class="text-white-50 mb-5">Warning! Authorized users only.</p>
+                    <form action="" method="POST">
+                      {% csrf_token %}
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="text" name="username" class="form-control form-control-lg" />
+                        <label class="form-label" for="typeEmailX">Username</label>
+                      </div>
+                      <div class="form-outline form-white mb-4">
+                        <input type="password" name="password" class="form-control form-control-lg" />
+                        <label class="form-label" for="typePasswordX">Password</label>
+                      </div>
+                      <input class="btn btn-outline-light btn-lg px-5" type="submit" value="Submit"></input>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

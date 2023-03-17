@@ -1,0 +1,21 @@
+body {    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgb(235, 238, 235), rgb(127, 230, 153)) */
+    background-image: linear-gradient(
+      to right,
+      #baf3c6,
+      #c2f5cf,
+      #cbf7d6,
+      #d4f8da,
+      #ddfae3
+    );
+    }
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #027411,#05a51a, #08f02f) !important;
+    color: #fff;
+}
+
+
+
+/* Primary Background Colors*/
