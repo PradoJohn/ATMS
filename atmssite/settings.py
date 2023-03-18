@@ -152,9 +152,14 @@ WSGI_APPLICATION = 'atmssite.wsgi.application'
 
 DATABASES = {
     'default': {
-          'ENGINE': 'django.db.backends.sqlite3',
-          'NAME': BASE_DIR / 'db.sqlite3',
-        
+          #'ENGINE': 'django.db.backends.sqlite3',
+          #'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'atms_1',
+        'USER': 'atmsadmin',
+        'PASSWORD': 'COEProject2023!',
+        'HOST': 'atms-database-1.cstucykw5wpu.ap-northeast-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
