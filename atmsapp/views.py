@@ -9,9 +9,8 @@ def dashboard(request):
     return render(request, 'menu/dashboard.html', {})
 
 def index(request):
-    #return render(request, 'login_message.html', {})
-    return render(request, 'menu/dashboard.html', {})
-
+    return render(request, 'login_message.html', {})
+    
 def gps_sensors(request):
     return render(request, 'menu/gps_sensors.html', {})
 
