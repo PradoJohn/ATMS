@@ -11,15 +11,15 @@ def dashboard(request):
 def index(request):
     return render(request, 'login_message.html', {})
     
-def gps_sensors(request):
-    return render(request, 'menu/gps_sensors.html', {})
+def traffic_management(request):
+    return render(request, 'menu/traffic_management.html', {})
 
-def air_quality(request):
+def pollution_management(request):
   record = Record.objects.all().values()
   road = Road.objects.all().values()
   location = Location.objects.all().values()
   vehicle = Vehicle.objects.all().values()
-  template = loader.get_template('menu/air_quality.html')
+  template = loader.get_template('menu/pollution_management.html')
   context = {
     'record': record,
     'road': road,
@@ -31,11 +31,18 @@ def air_quality(request):
 def home(request):
     return render(request, 'menu/home.html', {})
 
+def about(request):
+    return render(request, 'menu/about_us.html', {})
+
 def user(request):
     return render(request, 'user/user.html', {})
 
-def help(request):
-    return render(request, 'user/help.html', {})
+def settings(request):
+    return render(request, 'user/settings.html', {})
+
+def contact(request):
+    return render(request, 'menu/contact_us.html', {})
+
 
 def all_records(request):
   record = Record.objects.all().values()

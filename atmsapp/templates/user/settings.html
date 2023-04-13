@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+
+
+
+
+{% block content %}
+
+
+<div class="card col-6">
+    <div class="card-header">
+        <div class="h5">Settings</div>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="h6">Reset Password</div>
+            <hr>
+            <div class="mb-3">
+                <label for="password" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="password" placeholder="New password">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Confirm password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
