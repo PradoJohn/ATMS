@@ -4,7 +4,6 @@
 
 <!--. Grid Card GPS Sensor -->
     <div class="row">
-        
         <div class="card-header text-center">
             <h3>Traffic Management Service</h3>
         </div>
@@ -14,12 +13,7 @@
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
             <a href = "{% url 'traffic_management2' %}" class="btn btn-outline-success" for="btnradio2">Version 2</a>
-          </div>
-
-
-
-
-
+        </div>
         <div class="card-body">
             <h5 class="card-title">ATMS Team is here to serve.</h5>
             <p>
@@ -29,41 +23,37 @@
                 whereabouts, and mulfunctioned gps sensors. <br>
                 <a href="{% url 'traffic_management2' %}">Version 2</a> views summarize information of gathered data processed by by the system.
             </p>
-            
-        </div>
-
-    
-    </div>
-    
-    <div class="row d-flex justify-content-between align-items-center">
-        <div class="col-xxl-8">
-            <div class="card">
-                <div class="card-statistic-3 p-4">
-                    <div class="h5">GPS Sensor Coloration Indicator</div>
-                    <p>The GPS sensors receive data parameters including Longitude, Latitude, and Speed. 
-                        The system then processes the longitude and latitude to determine the accurate location of the GPS sensors. 
-                        Based on the location of the GPS sensor, the system identifies the type of road it is on. Once the road type is determined, 
-                        the system processes the information to approximate the traffic flow gathered by the GPS sensor. 
-                        Depending on the traffic flow, the system identifies the following coloration:
-                    </p>
-                    <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor Mulfunctioned</p>
-                    <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p>
-                    <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p>
-                    <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p>
-                    <p class="l-bg-cherry ps-1 mb-0">Extreme Traffic</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xxl-4  col-md-6 col-sm-12">
-            <div class="card">
-                <div class="card-statistic-3 p-4">
-                    <div class="h5">Coloration Count Chart:</div>
-                    <canvas id="doughnutChart"></canvas>
-
-                </div>
-            </div>
         </div>
     </div>
+    
+    <div class="row d-flex justify-content-center">
+        
+        <div class="card col-lg-6">
+            <h5 class="card-header">GPS Sensor Coloration Indicator</h5>
+            <div class="card-body">
+                <p>The GPS sensors receive data parameters including Longitude, Latitude, and Speed. 
+                    The system then processes the longitude and latitude to determine the accurate location of the GPS sensors. 
+                    Based on the location of the GPS sensor, the system identifies the type of road it is on. Once the road type is determined, 
+                    the system processes the information to approximate the traffic flow gathered by the GPS sensor. 
+                    Depending on the traffic flow, the system identifies the following coloration:
+                </p>
+                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor Mulfunctioned</p><br>
+                <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p><br>
+                <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p><br>
+                <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p><br>
+                <p class="l-bg-cherry ps-1 mb-0">Extreme Traffic</p><br>
+            </div>
+        </div>
+        <div class="card col-lg-5">   
+            <h5 class="card-header">Coloration Count Chart:</h5> 
+            <div class="card-body">
+                <canvas id="doughnutChart"></canvas>
+            </div>
+            <div class="card-footer"><p style="font-size: small;">Example Reading: According to the chart, there are 15 GPS sensors highlighted in red, indicating that 15 vehicles are currently facing severe traffic conditions.</p></div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-xxl-2 col-lg-3 col-sm-6">
             <div class="card l-bg-grey-dark">

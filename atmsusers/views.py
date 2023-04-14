@@ -9,7 +9,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect ('dashboard')
+            return redirect ('home')
         else:
             messages.success(request, ('Invalid Username or Password. Try Again.'))
             return redirect ('login')
