@@ -1,35 +1,28 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-  <div class="d-flex align-items-center">
-      <i class="fas fa-bars primary-text fs-4 me-3" id="menu-toggle"></i>
-      
 
-      
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success bg-transparent" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-      <div class="px-4 col-sm-6" id="currentTime"> </div>
-
-  </div>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-user me-2"></i>ATMS Admin
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'user' %}">User Profile</a></li>
-                  <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
-                  <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
-              </ul>
-          </li>
-      </ul>
-  </div>
- 
-
-
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+    <div class="d-flex align-items-stretch">
+        <i class="fas fa-expand primary-text fs-4 me-3" aria-hidden="false" id="menu-toggle"></i>
+    </div>
+    <div class="px-4 col-sm-6" id="currentTime"></div>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user me-2"></i>Admin User
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'user' %}">User Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+  
+  
+  </nav>

@@ -3,8 +3,11 @@
     <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
             class="fas fa-truck-monster me-2"></i>ATMS</div>
     <div class="list-group list-group-flush my-3">
-        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                class="fa fa-home me-2"></i>Home</a>
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                class="fas fa-border-all me-2" aria-hidden="true"></i>Dashboard</a>
+        
         <a href="{% url 'traffic_management' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fas fa-project-diagram me-2"></i>Traffic Management</a>
         <a href="{% url 'pollution_management' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i

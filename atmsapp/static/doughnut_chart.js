@@ -3,7 +3,7 @@ var ctxD = document.getElementById("doughnutChart").getContext('2d');
 var myLineChart = new Chart(ctxD, {
   type: 'doughnut',
   data: {
-    labels: ["Red", "Green", "Yellow", "Orange", "Grey"],
+    labels: ["Extreme Traffic", "Normal", "Light Traffic", "Traffic", "Mulfunctioned"],
     datasets: [{
       data: [15, 15, 5, 5, 5],
       backgroundColor: ["red", "green", "yellow", "orange", "gray"],

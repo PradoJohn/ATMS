@@ -2,32 +2,23 @@
 
 
 {% block content %}    
-<div class="d-flex justify-content-start">
-    <div class="h3">Main Records</div>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-folder me-2"></i>ATMS Admin
-                </a>
-                
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'all_records' %}">Main Records</a></li>
-                    <li><a class="dropdown-item" href="{% url 'location' %}">Location</a></li>
-                    <li><a class="dropdown-item" href="{% url 'road' %}">Road</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{% url 'add_location' %}">Add Records</a></li>
-                </ul>
-            </li>
-    <hr> 
+
+<div class="row d-flex justify-content-center">
+    <h5 class="card-header text-center">
+        Historical Records
+    </h5>
+    <div class="card-body">
+        <p>
+            Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
+            GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+        </p>
+    </div>
 </div>
-<div class="h5">GPS Sensors Coloration description list indicating:</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate
-                 velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <div class="col-xxl-8">
+<hr>
+<div class="row d-flex justify-content-center">
+    <div class="card col-8">
+        <h5 class="card-header">GPS SENSOR ID</h5>
+        <div class="card-body">
             <table class="table table-striped">
                 <th>
                     <tr>
@@ -53,4 +44,8 @@
                 {% endfor %}
             </table>
         </div>
+    </div>
+</div>
+
+
 {% endblock %} 

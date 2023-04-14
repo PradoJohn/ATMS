@@ -1,0 +1,859 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--. Grid Card GPS Sensor -->
+    <div class="row">
+        <div class="card-header text-center">
+            <h3>Traffic Management Service</h3>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+            <a href = "{% url 'traffic_management' %}" class="btn btn-outline-success" for="btnradio1">Version 1</a>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <a href = "{% url 'traffic_management2' %}" class="btn btn-outline-success" for="btnradio2">Version 2</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">ATMS Team is here to serve.</h5>
+            <p>
+                There are two version of Traffic Management Service, click the link 
+                of desired version.<br>
+                <a href="{% url 'traffic_management' %}">Version 1</a> views and manages information about the gps sensors, including the paramaters it collects,
+                whereabouts, and mulfunctioned gps sensors. <br>
+                <a href="{% url 'traffic_management2' %}">Version 2</a> views summarize information of gathered data processed by by the system.
+            </p>
+        </div>
+    </div>
+    
+    <div class="row d-flex justify-content-center">
+        
+        <div class="card col-lg-6">
+            <h5 class="card-header">GPS Sensor Coloration Indicator</h5>
+            <div class="card-body">
+                <p>The GPS sensors receive data parameters including Longitude, Latitude, and Speed. 
+                    The system then processes the longitude and latitude to determine the accurate location of the GPS sensors. 
+                    Based on the location of the GPS sensor, the system identifies the type of road it is on. Once the road type is determined, 
+                    the system processes the information to approximate the traffic flow gathered by the GPS sensor. 
+                    Depending on the traffic flow, the system identifies the following coloration:
+                </p>
+                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor Mulfunctioned</p><br>
+                <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p><br>
+                <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p><br>
+                <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p><br>
+                <p class="l-bg-cherry ps-1 mb-0">Extreme Traffic</p><br>
+            </div>
+        </div>
+        <div class="card col-lg-5">   
+            <h5 class="card-header">Coloration Count Chart:</h5> 
+            <div class="card-body">
+                <canvas id="doughnutChart"></canvas>
+            </div>
+            <div class="card-footer"><p style="font-size: small;">Example Reading: According to the chart, there are 15 GPS sensors highlighted in red, indicating that 15 vehicles are currently facing severe traffic conditions.</p></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-grey-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS1</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 1
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>1000Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS2</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 2
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>100Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS3</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 3
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>0Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS4</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 4
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>50Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS5</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 5
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>30Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS6</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 6
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>20Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS7</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 7
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>15Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS8</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 8
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>35Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS9</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 9
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>10Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-grey-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS10</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 10
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>1000Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS11</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 11
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>100Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS12</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 12
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>50Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS13</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 13
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>30Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS14</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 14
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>20Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS15</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 15
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>15Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS16</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 16
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>35Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS17</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 17
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>10Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-grey-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS18</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 18
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>1000Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS19</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 19
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>100Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS20</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 20
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>50Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS21</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 21
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>30Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS22</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 22
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>20Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS23</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 23
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>15Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS24</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 24
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>35Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS25</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 25
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>10Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-grey-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS26</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 26
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>1000Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS27</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 27
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>100Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS28</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 28
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>50Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS29</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 29
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>30Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS30</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 30
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>20Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS31</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 31
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>15Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS32</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 32
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>35Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS33</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 33
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>10Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-grey-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS34</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 34
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>1000Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS35</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 35
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>100Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS36</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 36
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>50Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS37</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 37
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>30Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS38</h5>
+                    </div>
+                    <div class="row align-items-center mb-2">
+                        <div class="col-6">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 38
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <span>20Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-yellow-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS39</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 39
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>15Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-2 col-lg-3 col-sm-6">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">GPS40</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <p class="d-flex align-items-center mb-0">
+                                Location 40
+                            </p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <span>35Kph <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
