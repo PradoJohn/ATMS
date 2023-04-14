@@ -10,6 +10,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name = 'dashboard'),
     path('home/',views.home, name = 'home'),
     path('traffic_management/', views.traffic_management, name = 'traffic_management'),
+    path('traffic_management2/', views.traffic_management2, name = 'traffic_management2'),
     path('pollution_management/', views.pollution_management, name = 'pollution_management'),
     path('all_records/delete/<int:id>', views.delete, name='delete'),
     path('user/', views.user, name = 'user'),

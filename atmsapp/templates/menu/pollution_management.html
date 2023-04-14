@@ -2,38 +2,123 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-  <div class="h2">Air Pollution Management Service</div> 
-  <hr> 
-</div>
-<div class="row">
-  <div class="col-xl-12">   
-    <div class="h5">Some Information About Air Quality:</div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-  </div>
-  <div class="col-xl-6">
-    <div class="card">
-        <div class="card-statistic-3 p-4">
-            <div class="h5">Air Quality Polar Chart :</div>
-            <canvas id="polarChart"></canvas>
 
-        </div>
+<div class="row">
+    <h2 class="card-header text-center">
+        Air Pollution Management Service
+    </h2>
+
+    <div class="card-body">
+        <h5 class="card-title">ATMS Team is here to serve.</h5>
+        <p>
+            Baguio City, located in the northern part of the Philippines, has been grappling with pollution issues in recent years. 
+            The city, known for its cool climate and lush greenery, has seen a rise in air pollution due to increasing vehicular traffic 
+            and industrial activities. The high volume of vehicles on the roads, combined with inadequate public transportation and urban planning, 
+            has resulted in congested roads and emissions from vehicles contributing to air pollution. Additionally, the city's growing population and 
+            commercial activities have led to increased waste generation and improper waste disposal practices, resulting in pollution of the city's water 
+            bodies and land. The combination of these factors has resulted in deteriorating air and water quality in Baguio City, posing health risks to its residents 
+            and threatening the natural beauty that the city is known for. Addressing pollution in Baguio City requires comprehensive measures such as promoting sustainable 
+            transportation, improving waste management practices, and increasing public awareness about the importance of environmental protection.
+        </p>
+        
     </div>
 </div>
-<div class="col-xl-6">
-    <div class="card">
-        <div class="card-statistic-3 p-4">
-            <div class="h5">Air Quality Line Chart:</div>
+<div class="row d-flex justify-content-center">
+    <div class="card text-center">
+        <h5 class="card-header text-white" style="background-color: rgb(6, 83, 57); ">GPS Sensors Information</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th >Air Sensor ID</th>
+                    <th >PM</th>
+                    <th >Gaseous</th>
+                    <th >Meteorological</th>
+                    <th >Other pollutants</th>
+                    <th >Location</th>
+                    <th >Time</th>
+                    <th >Date</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">12</th>
+                    <td>PM2.5</td>
+                    <td>carbon monoxide (CO)</td>
+                    <td>Humid</td>
+                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
+                    <td>Session Road</td>
+                    <td>2:53pm</td>
+                    <td>4/14/2023</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">12</th>
+                    <td>PM2.5</td>
+                    <td>carbon monoxide (CO)</td>
+                    <td>Humid</td>
+                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
+                    <td>Session Road</td>
+                    <td>2:53pm</td>
+                    <td>4/14/2023</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">12</th>
+                    <td>PM2.5</td>
+                    <td>carbon monoxide (CO)</td>
+                    <td>Humid</td>
+                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
+                    <td>Session Road</td>
+                    <td>2:53pm</td>
+                    <td>4/14/2023</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">12</th>
+                    <td>PM2.5</td>
+                    <td>carbon monoxide (CO)</td>
+                    <td>Humid</td>
+                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
+                    <td>Session Road</td>
+                    <td>2:53pm</td>
+                    <td>4/14/2023</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+    
+</div>
+
+
+<div class="row d-flex justify-content-center">
+    <div class="card col-lg-5">
+        <h5 class="card-header text-white text-center" style="background-color: rgb(5, 99, 99);">
+            Air Quality Polar Chart
+        </h5>
+        <div class="card-body">
+            <canvas id="polarChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card col-lg-6">
+        <h5 class="card-header text-white text-center" style="background-color: rgb(5, 99, 99);">
+            Air Quality Line Chart
+        </h5>
+        <div class="card-body">
             <canvas id="lineChart"></canvas>
         </div>
     </div>
+
+
 </div>
+
+
+<div class="row">
+  
+
+
 
   <div class="col-xl-12">
     <table class="table table-striped">

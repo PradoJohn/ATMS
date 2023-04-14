@@ -14,6 +14,9 @@ def index(request):
 def traffic_management(request):
     return render(request, 'menu/traffic_management.html', {})
 
+def traffic_management2(request):
+    return render(request, 'menu/traffic_management2.html', {})
+
 def pollution_management(request):
   record = Record.objects.all().values()
   road = Road.objects.all().values()

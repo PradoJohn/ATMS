@@ -1,27 +1,105 @@
 
 {% extends 'base.html' %}
-
+{%load static%}
 {% block content %}
-<div>
-  <div class="h2">Welcome ATMS Users!</div> 
-  <hr> 
+  <h2 class="card-header text-center">
+    ATMS Dashboard
+  </h2>
+
+<div class="card-body">
+  <h5>ATMS Extended Features and Information </h5>
+  <p>
+    The Advanced Traffic Management Service (ATMS) is a comprehensive traffic management system that goes beyond basic traffic monitoring and control. 
+    It is a sophisticated system that utilizes advanced technologies to gather and analyze various data to provide valuable insights for traffic management and control. 
+    In addition to the features already mentioned, such as vehicle counting, accident counting, and weather reports, the ATMS can offer several other types of information 
+    to support traffic management efforts.
+  </p>
 </div>
 
- 
-
-    <div class="card col-8">
-      <div class="card-header">
-        <div class="h5">Advance Traffic Management Service</div></div>
-      <div class="card-body">
-        <p>ATMS is a crucial part of the broader Intelligent Transport System (ITS), 
-          which utilizes a comprehensive approach to manage highway traffic by gathering, 
-          processing, analyzing, and providing real-time data to users. Specifically, 
-          ATMS serves as a platform for monitoring, controlling, and ensuring safety on highways.
-        </p>
+<div class="row d-flex justify-content-center">
+  <div class="card col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between ">
+          <div class="fs-2">5</div>
+        <i class = "fas fa-car-crash fs-1 bg-transparent "></i>
       </div>
-    </div>   
+    </div>
+    <div class="card-footer text-white text-center" style="background-color: rgb(165, 43, 43);">Incidents Today</div>
+  </div>
+  <div class="card col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+          <div class="fs-2">25</div>
+        <i class = "fas fa-car-crash fs-1 bg-transparent "></i>
+      </div>
+    </div>
+    <div class="card-footer text-white text-center" style="background-color: rgb(165, 43, 43);">Incidents Last Week</div>
+  </div>
+  <div class="card col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+          <div class="fs-2">50</div>
+        <i class = "fas fa-car-crash fs-1 bg-transparent " ></i>
+      </div>
+    </div>
+    <div class="card-footer text-white text-center" style="background-color: rgb(165, 43, 43);">Incidents Last Month</div>
+  </div>
+</div>
 
-    <div class="row d-flex align-items-stretch">
+<hr>
+
+<div class="row justify-content-center">
+  <div class="card col-lg-4">
+    <div class="card-header text-center">
+      <h6>Vehicle Per Hour (VPH)</h6>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center rounded">
+        <div class="fs-1"><b>5,231</b></div>
+        <i class = "fas fa-arrow-up fs-1 bg-transparent" ></i>
+      </div>
+    </div>
+    <div class="card-footer text-center text-white" style="background-color: rgb(122, 81, 4);"><h5>Inbound Traffic Volume</h5> </div>
+  </div>
+
+  <div class="card col-lg-4">
+    <div class="card-header text-center">
+      <h6>Vehicle Per Hour (VPH)</h6>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center rounded">
+        <div class="fs-1"><b>3,231</b></div>
+        <i class = "fas fa-arrow-down fs-1 bg-transparent" ></i>
+      </div>
+    </div>
+    <div class="card-footer text-center text-white" style="background-color: rgb(11, 100, 70);"><h5>Outbound Traffic</h5> </div>
+  </div>
+</div>
+
+
+<hr>
+
+
+<div class="row justify-content-center">
+  <div class="card col-9">
+    <h5 class="card-header text-white text-center" style="background-color: rgb(3, 124, 124);">
+      Predictive Analytics
+    </h5>
+    <div class="card-body">
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="card-footer">
+      <p>
+         The ATMS can use historical and real-time data to predict traffic patterns and trends. 
+        This information can be used to anticipate congestion and proactively implement measures to alleviate it, such as adjusting signal timings or rerouting traffic. 
+        Predictive analytics can also help in planning road maintenance activities and optimizing road network capacity.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    <div class="row d-flex align-items-center">
       <div class="col-xl-6">
         <div class="row">
           <div class="col-xl-6">
@@ -102,11 +180,11 @@
       <div class="col-xl-6 ">
           <div class="col-xl-12">
             <div class="card">
-              <div class="card-content">
+              
                 <div class="card-body">
-                  <canvas id="lineChart" style="width:100%;"></canvas>
+                  <canvas id="chartjs-line"></canvas>
                 </div>
-              </div>
+            
             </div>
           </div>
       </div>

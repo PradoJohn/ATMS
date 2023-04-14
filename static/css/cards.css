@@ -1,24 +1,11 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	text-decoration: none;
-    list-style: none;
-}
 
-
-body {
-    background: #b5f1ca;
-	/* background: linear-gradient(to right,#b5f1ca, #e1f5e6) */
-}
 
 .card {
-    background-color: #ffffff;
     border-radius: 5px;
+    padding: 0%;
     border: none;
     position: relative;
-    margin-bottom: 15px;
-	margin-top: 15px;
+    margin: 15px;
     box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
 }
 
@@ -58,7 +45,6 @@ body {
 .card .card-statistic-3 .card-icon {
     text-align: center;
     line-height: 50px;
-    margin-left: 15px;
     color: #000;
     position: absolute;
     right: -5px;
@@ -100,18 +86,6 @@ body {
 	  font-size: 3.5rem;
 	}
   }
-  .dropdown:hover>.dropdown-menu {
-    display: block;
-  }
   
-  .dropdown>.dropdown-toggle:active {
-    /*Without this, clicking will make it sticky*/
-      pointer-events: none;
-  }
 
-
-  #currentTime {
-    font-size: 2em;
-    font-family: 'Oswald';
-    margin: 10 auto;
-  }
+  
