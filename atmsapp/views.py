@@ -9,7 +9,7 @@ def dashboard(request):
     return render(request, 'menu/dashboard.html', {})
 
 def index(request):
-    return render(request, 'login_message.html', {})
+    return render(request, 'menu/home.html', {})
     
 def traffic_management(request):
     return render(request, 'menu/traffic_management.html', {})
