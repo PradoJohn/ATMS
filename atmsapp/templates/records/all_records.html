@@ -30,29 +30,31 @@
             
         </div>
         <div class="card-body">
-            <table class="table table-striped">
-                <th>
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <th>
+                        <tr>
+                            <td>GPSID</td>
+                            <td>Latitude</td>
+                            <td>Longitude</td>
+                            <td>Speed</td>
+                            <td>DATE/TIME</td>
+                            <td>HANDLE</td>
+                        </tr>
+                    </th>
+                    {% for x in record %}
                     <tr>
-                        <td>GPS ID</td>
-                        <td>Latitude</td>
-                        <td>Longitude</td>
-                        <td>Speed</td>
-                        <td>DATE - TIME</td>
-                        <td>HANDLE</td>
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.road_id }}</td>
+                        <td>{{ x.location_id }}</td>
+                        <td>{{ x.vehicle_id }}</td>
+                        <td>{{ x.time_date }}</td>
+                        <td>{{ x.intensity }}</td>
+                        <td><a href="delete/{{ x.id }}">delete</a></td>
                     </tr>
-                </th>
-                {% for x in record %}
-                <tr>
-                    <td>{{ x.id }}</td>
-                    <td>{{ x.road_id }}</td>
-                    <td>{{ x.location_id }}</td>
-                    <td>{{ x.vehicle_id }}</td>
-                    <td>{{ x.time_date }}</td>
-                    <td>{{ x.intensity }}</td>
-                    <td><a href="delete/{{ x.id }}">delete</a></td>
-                </tr>
-                {% endfor %}
-            </table>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>
