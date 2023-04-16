@@ -1,5 +1,24 @@
 from django.db import models
 
+
+
+class GPSDevice(models.Model):
+  name = models.CharField(max_length=255, null=True)
+  IMEI_number = models.CharField(max_length=255, null=True)
+  product_model = models.CharField(max_length=255, null=True)
+  network = models.CharField(max_length=255, null=True)
+  SIM_number = models.CharField(max_length=255, null=True)
+
+  def __str__(self):
+    return self.name
+
+class GPSInformation(models.Model):
+  gpsdevice = models.ForeignKey(GPSDevice, null=True, on_delete=models.CASCADE)
+  latitude = models.FloatField(null=True)
+  longitude = models.FloatField(null=True)
+  speed = models.CharField(max_length=255)
+  date_created = models.DateTimeField(auto_now_add=True, null=True)
+
 class Book(models.Model):
   title = models.CharField(max_length=255)
   pub_date = models.DateTimeField('date Published')
@@ -32,3 +51,4 @@ class Record(models.Model):
   road= models.ForeignKey(Road, null=True, on_delete=models.CASCADE)
   location= models.ForeignKey(Location, null=True, on_delete=models.CASCADE)
   vehicle= models.ForeignKey(Vehicle, null=True, on_delete=models.CASCADE)
+
