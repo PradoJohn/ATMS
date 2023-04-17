@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from . models import *
+from .models import *
 
 
 def dashboard(request):
@@ -18,18 +18,13 @@ def traffic_management2(request):
     return render(request, 'menu/traffic_management2.html', {})
 
 def pollution_management(request):
-  record = Record.objects.all().values()
-  road = Road.objects.all().values()
-  location = Location.objects.all().values()
-  vehicle = Vehicle.objects.all().values()
-  template = loader.get_template('menu/pollution_management.html')
+  pollution_information = AirPollutionInformation.objects.all()
+  pollution_detector = PollutionDetector.objects.all()
   context = {
-    'record': record,
-    'road': road,
-    'location': location,
-    'vehicle': vehicle,
-  }
-  return HttpResponse(template.render(context, request))
+    'pollution_information': pollution_information,
+    'pollution_detector' : pollution_detector,
+    }
+  return render(request, 'menu/pollution_management.html', context)
 
 def home(request):
     return render(request, 'menu/home.html', {})
@@ -47,39 +42,41 @@ def contact(request):
     return render(request, 'menu/contact_us.html', {})
 
 def devices(request):
-    return render(request, 'menu/devices.html', {})
+    gps_devices = GPSDevice.objects.all()
+    pollution_detector = PollutionDetector.objects.all()
+    context = {
+       'gps_devices': gps_devices,
+       'pollution_detector' : pollution_detector,
+    }
+    return render(request, 'menu/devices.html', context)
 
 def gps_handlers(request):
-    return render(request, 'menu/gps_handlers.html', {})
+  gps_handlers = GPSHolder.objects.all()
+  vehicles = GPSVehicle.objects.all()
+  context = {
+      'gps_handlers': gps_handlers,
+      'vehicles': vehicles
+  }
+  return render(request, 'menu/gps_handlers.html', context)
 
 def pollution_records(request):
-    return render(request, 'records/pollution_records.html', {})
-
-def all_records(request):
-  record = Record.objects.all().values()
-  road = Road.objects.all().values()
-  location = Location.objects.all().values()
-  vehicle = Vehicle.objects.all().values()
-  template = loader.get_template('records/all_records.html')
+  pollution_information = AirPollutionInformation.objects.all()
+  pollution_detector = PollutionDetector.objects.all()
   context = {
-    'record': record,
-    'road': road,
-    'location': location,
-    'vehicle': vehicle,
+    'pollution_information': pollution_information,
+    'pollution_detector' : pollution_detector,
+    }
+  return render(request, 'records/pollution_records.html', context)
+
+def gps_records(request):
+  gps_information = GPSInformation.objects.all()
+  gps_device = GPSDevice.objects.all()
+  context = {
+      'gps_information' : gps_information,
+      'gps_device' : gps_device,
   }
-  return HttpResponse(template.render(context, request))
+  return render(request, 'records/gps_records.html', context)
     
-
-def book_by_id(request, book_id):
-    book = Book.objects.get(pk=book_id)
-    return render(request, 'book_details.html', {'book': book})
-
-
-def delete(request, id):
-  record = Record.objects.get(id=id)
-  record.delete()
-  return HttpResponseRedirect(reverse('all_records'))
-
 
 def location(request):
     location = Location.objects.all().values()

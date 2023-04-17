@@ -33,15 +33,15 @@
                             <td>Description</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+                    {% for device in gps_devices %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ device.id }}</td>
+                        <td>{{ device.name }}</td>
+                        <td>{{ device.IMEI_number }}</td>
+                        <td>{{ device.product_model }}</td>
+                        <td>{{ device.network }}</td>
+                        <td>{{ device.SIM_number }}</td>
+                        <td>{{ device.main_function }}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -58,21 +58,16 @@
                 <table class="table table-striped ">
                     <th>
                         <tr>
-                            <td>Detector ID</td>
+                            <td>Detector Name</td>
                             <td>Product</td>
-                            <td>Location</td>
                             <td>Description</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+                    {% for detector in pollution_detector %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ detector.name }}</td>
+                        <td>{{ detector.product_model }}</td>
+                        <td>{{ detector.description }}</td>
                     </tr>
                     {% endfor %}
                 </table>
