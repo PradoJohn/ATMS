@@ -29,6 +29,31 @@
         
         <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                 class="fas fa-power-off me-2"></i>Logout</a>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-success bg-transparent ms-2 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Send Feedback
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Would you like to give a feedback?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        We appreciate your visit to the ATMS website. We kindly request your feedback, which should only take 1-2 minutes of your time.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAfi8Y51UMU9aWEwzN1NMMVVNWUUyTkROTVEyTjdQOC4u" 
+                class="btn btn-outline-success" for="btnradio2">Yes</a>
+                </div>
+                </div>
+                </div>
+        </div>
     </div>
 </div>
 <!-- /#sidebar-wrapper -->
