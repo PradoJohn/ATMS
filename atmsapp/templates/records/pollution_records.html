@@ -16,8 +16,10 @@
     </div>
     <div class="card-body">
         <p>
-            Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
-            GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+            Each Air Pollution Detector collected information shall be gathered and recorded in the system. Historical information can be view in this page.
+            <br>
+            All including particulate matter(PM), Gaseous, Meteorological, other pollutants, location, time and the date.
+            
         </p>
     </div>
 </div>
@@ -25,10 +27,10 @@
 <div class="row d-flex justify-content-center">
     <div class="card col-8">
        
-        <div class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+        <div class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);">
             <div class="col-xl-4">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Select a GPS Sensor</option>
+                    <option selected>Select a Pollution Detector</option>
                     <option value="1">GPS 1</option>
                     <option value="2">GPS 2</option>
                     <option value="3">GPS 3</option>
@@ -41,12 +43,13 @@
                 <table class="table table-striped ">
                     <th>
                         <tr>
-                            <td>GPSID</td>
-                            <td>Latitude</td>
-                            <td>Longitude</td>
-                            <td>Speed</td>
-                            <td>DATE/TIME</td>
-                            <td>HANDLE</td>
+                            <td>Air Sensor ID</td>
+                            <td>PM</td>
+                            <td>Gaseous</td>
+                            <td>Meteorological</td>
+                            <td>Other Pollutants</td>
+                            <td>Location</td>
+                            <td>Date/Time</td>
                         </tr>
                     </th>
                     {% for x in record %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block content %}    
+
+<div class="row d-flex justify-content-center">
+    <h5 class="card-header text-center">
+        GPS Devices Handlers
+    </h5>
+    <div class="card-body">
+        <p>
+            This page handles information of GPS Devices Handlers of the GPS Sensor Devices and Pollution Detector Devices.
+        </p>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="card col-xxl-5 col-sm-12">
+        <div class="card-header text-white d-flex justify-content-between" style="background-color: rgb(105, 114, 27);"> <h3>GPS Sensor Handlers</h3>
+            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Handler</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <th>
+                        <tr>
+                            <td>GPSID</td>
+                            <td>Vehicle Plate</td>
+                            <td>Vehicle Operator</td>
+                            <td>Operator Contact</td>
+                        </tr>
+                    </th>
+                    {% for x in record %}
+                    <tr>
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.road_id }}</td>
+                        <td>{{ x.location_id }}</td>
+                        <td>{{ x.vehicle_id }}</td>
+                        <td>{{ x.time_date }}</td>
+                        <td>{{ x.intensity }}</td>
+                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card col-xxl-5 col-sm-12">
+        <div class="card-header text-white d-flex justify-content-between" style="background-color: rgb(104, 5, 124);"> <h3>Vehicle Information</h3>
+            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Vehicle</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <th>
+                        <tr>
+                            <td>Vehicle Plate</td>
+                            <td>Make</td>
+                            <td>Model</td>
+                            <td>Year</td>
+                        </tr>
+                    </th>
+                    {% for x in record %}
+                    <tr>
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.road_id }}</td>
+                        <td>{{ x.location_id }}</td>
+                        <td>{{ x.vehicle_id }}</td>
+                        <td>{{ x.time_date }}</td>
+                        <td>{{ x.intensity }}</td>
+                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} 

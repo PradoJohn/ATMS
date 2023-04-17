@@ -46,6 +46,14 @@ def settings(request):
 def contact(request):
     return render(request, 'menu/contact_us.html', {})
 
+def devices(request):
+    return render(request, 'menu/devices.html', {})
+
+def gps_handlers(request):
+    return render(request, 'menu/gps_handlers.html', {})
+
+def pollution_records(request):
+    return render(request, 'records/pollution_records.html', {})
 
 def all_records(request):
   record = Record.objects.all().values()
