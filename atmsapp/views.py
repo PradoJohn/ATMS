@@ -12,7 +12,11 @@ def index(request):
     return render(request, 'menu/home.html', {})
     
 def traffic_management(request):
-    return render(request, 'menu/traffic_management.html', {})
+  gps_information = GPSInformation.objects.all()
+  context = {
+     'gps_information': gps_information,
+  }
+  return render(request, 'menu/traffic_management.html', context)
 
 def traffic_management2(request):
     return render(request, 'menu/traffic_management2.html', {})
@@ -42,13 +46,43 @@ def contact(request):
     return render(request, 'menu/contact_us.html', {})
 
 def devices(request):
-    gps_devices = GPSDevice.objects.all()
-    pollution_detector = PollutionDetector.objects.all()
-    context = {
-       'gps_devices': gps_devices,
-       'pollution_detector' : pollution_detector,
-    }
-    return render(request, 'menu/devices.html', context)
+  gps_device = GPSDevice.objects.all()
+  pollution_device = PollutionDetector.objects.all()
+
+  total_gps_devices = gps_device.count()
+  total_pollution_devices = pollution_device.count()
+  deployed_gps = gps_device.filter(status='Deployed').count()
+  deployed__pollution_device = pollution_device.filter(status='Deployed').count()
+  context = {
+    'gps_device': gps_device,
+    'pollution_device': pollution_device,
+    'total_gps_devices': total_gps_devices,
+    'total_pollution_devices': total_pollution_devices,
+    'deployed_gps': deployed_gps,
+    'deployed__pollution_device': deployed__pollution_device,
+
+  }
+  return render(request, 'menu/devices.html', context)
+
+
+def gps_device(request, pk):
+  gps_device = GPSDevice.objects.get(id=pk)
+  gps_information = gps_device.gpsinformation_set.all()
+  context = {
+     'gps_device': gps_device,
+     'gps_information': gps_information,
+  }
+  return render(request, 'devices/gps_device.html', context)
+
+def pollution_device(request, pk):
+  pollution_device = PollutionDetector.objects.get(id=pk)
+  pd_information = pollution_device.airpollutioninformation_set.all()
+  context = {
+     'pollution_device': pollution_device,
+     'pd_information': pd_information,
+  }
+  return render(request, 'devices/pollution_device.html', context)
+
 
 def gps_handlers(request):
   gps_handlers = GPSHolder.objects.all()

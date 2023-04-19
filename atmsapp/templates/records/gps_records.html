@@ -4,9 +4,9 @@
 {% block content %}    
 
 <div class="row d-flex justify-content-center">
-    <h5 class="card-header text-center">
+    <h2 class="card-header text-center">
         Historical Records
-    </h5>
+    </h2>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
         <a href = "{% url 'gps_records' %}" class="btn btn-outline-success" for="btnradio1">GPS Sensor</a>
@@ -16,8 +16,8 @@
     </div>
     <div class="card-body">
         <p>
-            Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
-            GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+         The set of the data shown below are GPS's Historical Information.
+         
         </p>
     </div>
 </div>
@@ -25,17 +25,9 @@
 <div class="row d-flex justify-content-center">
     <div class="card col-xxl-6 col-sm-12">
        
-        <div class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
-            <div class="col-xl-4">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Select a GPS Sensor</option>
-                    <option value="1">GPS 1</option>
-                    <option value="2">GPS 2</option>
-                    <option value="3">GPS 3</option>
-                  </select>
-            </div>
-            
-        </div>
+        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+            Collected GPS Sensors Information
+        </h4>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">

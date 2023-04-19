@@ -6,13 +6,14 @@ urlpatterns = [
     path('gps_records/', views.gps_records, name = 'gps_records'),
     path('location/', views.location, name = 'location'),
     path('add_location/', views.add_location, name = 'add_location'),
-    path('road/', views.road, name = 'road'),
     path('dashboard/', views.dashboard, name = 'dashboard'),
     path('home/',views.home, name = 'home'),
     path('traffic_management/', views.traffic_management, name = 'traffic_management'),
     path('traffic_management2/', views.traffic_management2, name = 'traffic_management2'),
     path('pollution_management/', views.pollution_management, name = 'pollution_management'),
     path('devices/', views.devices, name = 'devices'),
+    path('gps_device/<str:pk>/', views.gps_device, name = 'gps_device'),
+    path('pollution_device/<str:pk>/', views.pollution_device, name = 'pollution_device'),
     path('pollution_records/', views.pollution_records, name = 'pollution_records'),
     path('gps_handlers/', views.gps_handlers, name = 'gps_handlers'),
     path('user/', views.user, name = 'user'),
@@ -21,5 +22,5 @@ urlpatterns = [
     path('about/', views.about, name = 'about'),
     path('add_location/addrecord/', views.addrecord, name='addrecord'),
     
-    
+
 ]

@@ -5,6 +5,7 @@ from .models import *
 
 
 
+
 admin.site.register(Road)
 admin.site.register(Location)
 admin.site.register(GPSDevice)

@@ -44,36 +44,20 @@
                     <th >Longitude</th>
                     <th >Latitude</th>
                     <th >Speed (Kph)</th>
-                    <th >Time</th>
-                    <th >Date</th>
-
+                    <th >Date/Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">11</th>
-                    <td>16.3433</td>
-                    <td>15.3433</td>
-                    <td>25</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>16.3433</td>
-                    <td>15.3433</td>
-                    <td>21</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td >15.3433</td>
-                    <td>16.3433</td>
-                    <td>10</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
-                  </tr>
+                  {% for gps_information in gps_information %}
+                    <tr>
+                        <td>{{ gps_information.gpsdevice }}</td>
+                        <td>{{ gps_information.latitude }}</td>
+                        <td>{{ gps_information.longitude }}</td>
+                        <td>{{ gps_information.speed }}</td>
+                        <td>{{ gps_information.date_created }}</td>
+
+                    </tr>
+                    {% endfor %}
                 </tbody>
               </table>
             </div>
