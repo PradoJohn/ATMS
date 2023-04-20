@@ -14,9 +14,13 @@ def home(request):
 
 def dashboard(request):
   return render(request, 'menu/dashboard.html', {})
+
 def traffic_management(request):
-  
-  return render(request, 'menu/traffic_management.html', {})
+  coordinates = GPSCoordinate.objects.all()
+  context = {
+     'coordinates': coordinates,
+  }
+  return render(request, 'menu/traffic_management.html', context)
 
 def traffic_management2(request):
   return render(request, 'menu/traffic_management2.html', {})

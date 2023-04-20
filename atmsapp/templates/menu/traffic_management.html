@@ -40,40 +40,25 @@
                 <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th >GPS ID</th>
+                    <th >Date</th>
+                    <th >Time</th>
+                    <th >GPS Name</th>
                     <th >Longitude</th>
                     <th >Latitude</th>
                     <th >Speed (Kph)</th>
-                    <th >Time</th>
-                    <th >Date</th>
-
                   </tr>
                 </thead>
                 <tbody>
+                  {% for gps in coordinates %}
                   <tr>
-                    <th scope="row">11</th>
-                    <td>16.3433</td>
-                    <td>15.3433</td>
-                    <td>25</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
+                    <th scope="row">{{gps.date}} </th>
+                    <td>{{gps.time}}</td>
+                    <td>{{gps.gpsdevice}}</td>
+                    <td>{{gps.longitude}}</td>
+                    <td>{{gps.latitude}}</td>
+                    <td>{{gps.speed}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>16.3433</td>
-                    <td>15.3433</td>
-                    <td>21</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td >15.3433</td>
-                    <td>16.3433</td>
-                    <td>10</td>
-                    <td>2:52pm</td>
-                    <td>4/15/2023</td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
