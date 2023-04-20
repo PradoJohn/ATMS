@@ -1,40 +1,63 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from . models import *
+from .models import *
+from .forms import *
 
-
-def dashboard(request):
-    return render(request, 'menu/dashboard.html', {})
 
 def index(request):
-    return render(request, 'menu/home.html', {})
-    
-def traffic_management(request):
-    return render(request, 'menu/traffic_management.html', {})
-
-def traffic_management2(request):
-    return render(request, 'menu/traffic_management2.html', {})
-
-def pollution_management(request):
-  record = Record.objects.all().values()
-  road = Road.objects.all().values()
-  location = Location.objects.all().values()
-  vehicle = Vehicle.objects.all().values()
-  template = loader.get_template('menu/pollution_management.html')
-  context = {
-    'record': record,
-    'road': road,
-    'location': location,
-    'vehicle': vehicle,
-  }
-  return HttpResponse(template.render(context, request))
+  return render(request, 'menu/home.html', {})
 
 def home(request):
-    return render(request, 'menu/home.html', {})
+  return render(request, 'menu/home.html', {})
 
-def about(request):
+def dashboard(request):
+  return render(request, 'menu/dashboard.html', {})
+def traffic_management(request):
+  
+  return render(request, 'menu/traffic_management.html', {})
+
+def traffic_management2(request):
+  return render(request, 'menu/traffic_management2.html', {})
+
+def pollution_management(request):
+  
+  return render(request, 'menu/pollution_management.html', {})
+
+def devices(request):
+  return render(request, 'menu/devices.html', {})
+
+def gps_device(request, pk):
+  
+  return render(request, 'records/gps_device.html', {})
+
+def pollution_device(request, pk):
+  
+  return render(request, 'records/pd_device.html', {})
+
+
+def add_gps(request):
+
+  return render(request, 'records/add_gps_form.html', {})
+
+def update_gps(request, pk):
+  
+  return render(request, 'records/add_gps_form.html', {})
+
+def gps_operator(request):
+  
+  return render(request, 'menu/gps_operator.html', {})
+
+def gps_records(request):
+  return render(request, 'records/gps_records.html', {})
+
+
+def pollution_records(request):
+  return render(request, 'records/pollution_records.html', {})
+
+
+def about_us(request):
     return render(request, 'menu/about_us.html', {})
 
 def user(request):
@@ -43,73 +66,6 @@ def user(request):
 def settings(request):
     return render(request, 'user/settings.html', {})
 
-def contact(request):
+def contact_us(request):
     return render(request, 'menu/contact_us.html', {})
-
-def devices(request):
-    return render(request, 'menu/devices.html', {})
-
-def gps_handlers(request):
-    return render(request, 'menu/gps_handlers.html', {})
-
-def pollution_records(request):
-    return render(request, 'records/pollution_records.html', {})
-
-def all_records(request):
-  record = Record.objects.all().values()
-  road = Road.objects.all().values()
-  location = Location.objects.all().values()
-  vehicle = Vehicle.objects.all().values()
-  template = loader.get_template('records/all_records.html')
-  context = {
-    'record': record,
-    'road': road,
-    'location': location,
-    'vehicle': vehicle,
-  }
-  return HttpResponse(template.render(context, request))
-    
-
-def book_by_id(request, book_id):
-    book = Book.objects.get(pk=book_id)
-    return render(request, 'book_details.html', {'book': book})
-
-
-def delete(request, id):
-  record = Record.objects.get(id=id)
-  record.delete()
-  return HttpResponseRedirect(reverse('all_records'))
-
-
-def location(request):
-    location = Location.objects.all().values()
-    template = loader.get_template('records/location.html')
-    context = {
-    'location': location,
-  }
-    return HttpResponse(template.render(context, request))
-
-def add_location(request):
-    location = Location.objects.all().values()
-    template = loader.get_template('records/add_location.html')
-    context = {
-    'location': location,
-  }
-    return HttpResponse(template.render(context, request))
-
-def addrecord(request):
-  x = request.POST['road']
-  y = request.POST['type']
-  road = Road(road_name=x, road_type=y)
-  road.save()
-  return HttpResponseRedirect(reverse('add_location'))
-
-
-def road(request):
-  road = Road.objects.all().values()
-  template = loader.get_template('records/road.html')
-  context = {
-    'road': road,
-  }
-  return HttpResponse(template.render(context, request))
 

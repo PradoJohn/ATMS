@@ -24,23 +24,20 @@
                 <table class="table table-striped ">
                     <th>
                         <tr>
-                            <td>GPSID</td>
+                            <td>GPS Name</td>
                             <td>Vehicle Plate</td>
                             <td>Vehicle Operator</td>
                             <td>Operator Contact</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+                    <!-- {% for handler in gps_handlers %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ handler.gpsdevice }}</td>
+                        <td>{{ handler.plate }}</td>
+                        <td>{{ handler.operator }}</td>
+                        <td>{{ handler.contact }}</td>
                     </tr>
-                    {% endfor %}
+                    {% endfor %} -->
                 </table>
             </div>
         </div>
@@ -61,15 +58,12 @@
                             <td>Year</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+                    {% for vehicle in vehicles %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ vehicle.plate }}</td>
+                        <td>{{ vehicle.make }}</td>
+                        <td>{{ vehicle.model }}</td>
+                        <td>{{ vehicle.year }}</td>                     
                     </tr>
                     {% endfor %}
                 </table>

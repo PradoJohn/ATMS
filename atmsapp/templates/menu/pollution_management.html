@@ -37,52 +37,23 @@
                     <th >Meteorological</th>
                     <th >Other pollutants</th>
                     <th >Location</th>
-                    <th >Time</th>
-                    <th >Date</th>
-
+                    <th >Date/Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">12</th>
-                    <td>PM2.5</td>
-                    <td>carbon monoxide (CO)</td>
-                    <td>Humid</td>
-                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
-                    <td>Session Road</td>
-                    <td>2:53pm</td>
-                    <td>4/14/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12</th>
-                    <td>PM2.5</td>
-                    <td>carbon monoxide (CO)</td>
-                    <td>Humid</td>
-                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
-                    <td>Session Road</td>
-                    <td>2:53pm</td>
-                    <td>4/14/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12</th>
-                    <td>PM2.5</td>
-                    <td>carbon monoxide (CO)</td>
-                    <td>Humid</td>
-                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
-                    <td>Session Road</td>
-                    <td>2:53pm</td>
-                    <td>4/14/2023</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12</th>
-                    <td>PM2.5</td>
-                    <td>carbon monoxide (CO)</td>
-                    <td>Humid</td>
-                    <td>polycyclic aromatic hydrocarbons (PAHs)</td>
-                    <td>Session Road</td>
-                    <td>2:53pm</td>
-                    <td>4/14/2023</td>
-                  </tr>
+
+                    <!-- {% for detector in pollution_data %}
+                    <tr>
+                        <td>{{ detector.pollution_detector }}</td>
+                        <td>{{ detector.pm }}</td>
+                        <td>{{ detector.gaseous }}</td>
+                        <td>{{ detector.meteorological }}</td>
+                        <td>{{ detector.other_pollutants }}</td>
+                        <td>{{ detector.location }}</td>
+                        <td>{{ detector.date_created }}</td>
+                    </tr>
+                    {% endfor %} -->
+                
                 </tbody>
               </table>
             </div>

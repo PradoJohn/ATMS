@@ -9,7 +9,7 @@
     </h5>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-        <a href = "{% url 'all_records' %}" class="btn btn-outline-success" for="btnradio1">GPS Sensor</a>
+        <a href = "{% url 'gps_records' %}" class="btn btn-outline-success" for="btnradio1">GPS Sensor</a>
       
         <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
         <a href = "{% url 'pollution_records' %}" class="btn btn-outline-success" for="btnradio2">Pollution Detector</a>
@@ -23,7 +23,7 @@
 </div>
 <hr>
 <div class="row d-flex justify-content-center">
-    <div class="card col-8">
+    <div class="card col-xxl-6 col-sm-12">
        
         <div class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
             <div class="col-xl-4">
@@ -46,18 +46,17 @@
                             <td>Longitude</td>
                             <td>Speed</td>
                             <td>DATE/TIME</td>
-                            <td>HANDLE</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+
+                    {% for device in gps_information %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ device.gpsdevice }}</td>
+                        <td>{{ device.latitude }}</td>
+                        <td>{{ device.longitude }}</td>
+                        <td>{{ device.speed }}</td>
+                        <td>{{ device.date_created }}</td>
+
                     </tr>
                     {% endfor %}
                 </table>

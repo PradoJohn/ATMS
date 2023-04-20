@@ -14,6 +14,18 @@
     </div>
 </div>
 <hr>
+<div class="row d-flex justify-content-center">
+    <div class="card col-xl-2 col-sm-6">
+        <div class="card-body d-flex justify-content-center">
+            {{total_gps_devices}}
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+            Total GPS Devices
+        </div>
+    </div>
+
+
+</div>
 <div class="row">
     <div class="card col-xxl-6 col-sm-12">
         <div class="card-header text-white d-flex justify-content-between" style="background-color: rgb(40, 27, 114);"> <h3>GPS Sensor Devices</h3>
@@ -28,22 +40,10 @@
                             <td>Name</td>
                             <td>IMEI</td>
                             <td>Product Model</td>
-                            <td>Network</td>
-                            <td>SIM Number</td>
-                            <td>Description</td>
+                            <td>Status</td>
                         </tr>
                     </th>
-                    {% for x in record %}
-                    <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
-                    </tr>
-                    {% endfor %}
+                    
                 </table>
             </div>
         </div>
@@ -58,23 +58,19 @@
                 <table class="table table-striped ">
                     <th>
                         <tr>
-                            <td>Detector ID</td>
+                            <td>Detector Name</td>
                             <td>Product</td>
-                            <td>Location</td>
                             <td>Description</td>
+                            <td>Status</td>
                         </tr>
                     </th>
-                    {% for x in record %}
+                    <!-- {% for detector in pollution_detector %}
                     <tr>
-                        <td>{{ x.id }}</td>
-                        <td>{{ x.road_id }}</td>
-                        <td>{{ x.location_id }}</td>
-                        <td>{{ x.vehicle_id }}</td>
-                        <td>{{ x.time_date }}</td>
-                        <td>{{ x.intensity }}</td>
-                        <td><a href="delete/{{ x.id }}">delete</a></td>
+                        <td>{{ detector.pd_name }}</td>
+                        <td>{{ detector.product_model }}</td>
+                        <td>{{ detector.description }}</td>
                     </tr>
-                    {% endfor %}
+                    {% endfor %} -->
                 </table>
             </div>
         </div>
