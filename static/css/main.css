@@ -1,5 +1,5 @@
 
-
+/* Start of Sidebar CSS */
 
 :root {
     --main-bg-color: #009d63;
@@ -95,8 +95,10 @@
       margin-left: -15rem;
     }
   }
+/* End of Sidebar CSS */
 
 
+/* Dropdown CSS */
 
   .dropdown:hover>.dropdown-menu {
     display: block;
@@ -107,10 +109,10 @@
       pointer-events: none;
   }
 
+/* CLock CSS */
+
 #currentTime {
     font-size: 2em;
     font-family: 'Oswald';
     margin: 10 auto;
   }
-
-

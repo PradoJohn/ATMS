@@ -7,7 +7,6 @@
     <h2 class="card-header text-center">
        Air Pollution Device Historical Records
     </h2>
-    
     <div class="card-body">
         <p>
             Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
@@ -15,11 +14,36 @@
         </p>
     </div>
 </div>
+<hr>
+<div class="row d-flex justify-content-center ">
+    <div class="col-xl-4 col-sm-6">
+        <div class="card-header d-flex align-items-center">
+            <h5 class="me-3">Device: </h5>
+            <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.value">
+                <option selected>{{ pollution_device.name }}</option>
+                {% for device in p_device %}
+                <option value="{% url 'p_device' device.id %}">{{ device.name }}</option>
+                {% endfor %}
 
+            </select>
+        </div>
+    </div>
+</div>
+<hr>
 <div class="row d-flex justify-content-center">
     <div class="row d-flex justify-content-center">
+        
         <div class="card col-xl-2 col-sm-12">
-            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);" >
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);" >
+                Sensor Device
+            </h5>
+            <h3 class="card-body d-flex justify-content-center ">
+                {{ pollution_device.name }}
+            </h3>
+        </div>
+
+        <div class="card col-xl-2 col-sm-12">
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);" >
                 Status
             </h5>
             <h3 class="card-body d-flex justify-content-center ">
@@ -28,49 +52,49 @@
         </div>
     
         <div class="card col-xl-2 col-sm-12">
-            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);">
                 Device Info
             </h5>
             <div class="card-body d-flex justify-content-center">
                 <p>
-                    Product Model: {{ pollution_device.product_model }} <br>
-    
-                    Description: {{ pollution_device.description }}
+                    <b class="me-2">Model:</b>  {{ pollution_device.product_model }} <br>
+                    <br>
+                    <b class="me-2">Description:</b>  {{ pollution_device.description }}
                 </p>
             </div>
         </div>
     </div>
 
-    <hr>
-    <div class="card col-xxl-6 col-sm-12">
+
+    <div class="card col-xxl-8 col-sm-12">
        
-        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);">
             {{pollution_device}} Historical Information
         </h4>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-                    <th>
+                    <thead>
                         <tr>
-                            <td>Name</td>
-                            <td>PM</td>
-                            <td>Gaseous</td>
-                            <td>Meteorological</td>
-                            <td>Other Pollutants</td>
-                            <td>Location</td>
-                            <td>DATE/TIME</td>
+                            <th>Name</th>
+                            <th>PM</td>
+                            <th>Gaseous</th>
+                            <th>Meteorological</th>
+                            <th>Other Pollutants</th>
+                            <th>Location</th>
+                            <th>DATE/TIME</th>
                         </tr>
-                    </th>
+                    </thead>
 
-                    {% for device in pd_information %}
+                    {% for pd_device in pd_data %}
                     <tr>
-                        <td>{{ device.pollution_detector }}</td>
-                        <td>{{ device.pm }}</td>
-                        <td>{{ device.gaseous }}</td>
-                        <td>{{ device.meteorological }}</td>
-                        <td>{{ device.other_pollutants }}</td>
-                        <td>{{ device.location }}</td>
-                        <td>{{ device.date_created }}</td>
+                        <td>{{ pd_device.p_sensor }}</td>
+                        <td>{{ pd_device.pm }}</td>
+                        <td>{{ pd_device.gaseous }}</td>
+                        <td>{{ pd_device.meteorological }}</td>
+                        <td>{{ pd_device.other_pollutants }}</td>
+                        <td>{{ pd_device.location }}</td>
+                        <td>{{ pd_device.date_created }}</td>
 
                     </tr>
                     {% endfor %}

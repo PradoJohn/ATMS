@@ -5,9 +5,8 @@
 
 <div class="row d-flex justify-content-center">
     <h2 class="card-header text-center">
-       GPS Historical Records
+       GPS Device Information
     </h2>
-    
     <div class="card-body">
         <p>
             Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
@@ -15,9 +14,31 @@
         </p>
     </div>
 </div>
-
+<hr>
+<div class="row d-flex justify-content-center ">
+    <div class="col-xl-4 col-sm-6">
+        <div class="card-header d-flex align-items-center">
+            <h5 class="me-3">Device: </h5>
+            <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.value">
+                <option selected>{{ gps_device.name }}</option>
+                {% for gps in gps %}
+                <option value="{% url 'gps' gps.id %}">{{ gps.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+<hr>
 <div class="row d-flex justify-content-center">
     <div class="row d-flex justify-content-center">
+        <div class="card col-xl-2 col-sm-12">
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);" >
+                GPS
+            </h5>
+            <h3 class="card-body d-flex justify-content-center ">
+                {{ gps_device.name }}
+            </h3>
+        </div>
         <div class="card col-xl-2 col-sm-12">
             <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);" >
                 Status
@@ -33,39 +54,41 @@
             </h5>
             <div class="card-body d-flex justify-content-center">
                 <p>
-                    IMEI: {{ gps_device.imei }} <br>
+                    <b>IMEI:</b> {{ gps_device.imei }} <br>
     
-                    Product Model: {{ gps_device.model }}
+                    <b>Product Model: </b>{{ gps_device.model }}
                 </p>
             </div>
         </div>
     </div>
 
-    <hr>
     <div class="card col-xxl-6 col-sm-12">
        
         <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
-            {{gps_device}} Historical Information
+            Historical Information
         </h4>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-                    <th>
+                    <thead>
                         <tr>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>GPSID</th>
                             <th>Latitude</th>
                             <th>Longitude</th>
-                            <th>Speed</th>
+                            <th>Speed (Kph)</th>
                         </tr>
-                    </th>
+                    </thead>
 
                     {% for gps_coordinate in gps_coordinate %}
                     <tr>
+                        <td scope="row">{{ gps_coordinate.date }}</td>
+                        <td>{{ gps_coordinate.time }}</td>
                         <td>{{ gps_coordinate.gpsdevice }}</td>
                         <td>{{ gps_coordinate.latitude }}</td>
                         <td>{{ gps_coordinate.longitude }}</td>
                         <td>{{ gps_coordinate.speed }}</td>
-                        <td>{{ gps_coordinate.date_created }}</td>
                     </tr>
                     {% endfor %}
                 </table>

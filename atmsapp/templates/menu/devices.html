@@ -108,7 +108,7 @@
                 </thead>
                 {% for pd in pollution_device %}
                 <tr>
-                    <td><a href="" class="btn btn-sm btn-info bg-transparent">View</a></td>
+                    <td><a href="{% url 'p_device' pd.id %}" class="btn btn-sm btn-info bg-transparent">View</a></td>
                     <td>{{ pd.id }}</td>
                     <td>{{ pd.name }}</td>
                     <td>{{ pd.product_model }}</td>

@@ -54,20 +54,24 @@ def devices(request):
   return render(request, 'menu/devices.html', context)
 
 def gps_device(request, pk):
+  gps = GPSDevice.objects.all()
   gps_device = GPSDevice.objects.get(id=pk)
   gps_coordinate = gps_device.gpscoordinate_set.all()
   context = {
      'gps_device': gps_device,
      'gps_coordinate': gps_coordinate,
+     'gps': gps,
   }
   return render(request, 'records/gps_device.html', context)
 
 def pollution_device(request, pk):
+  p_device = PollutionSensor.objects.all()
   pollution_device = PollutionSensor.objects.get(id=pk)
   pd_data = pollution_device.pollutiondata_set.all()
   context = {
      'pollution_device': pollution_device,
      'pd_data': pd_data,
+     'p_device': p_device,
   }
   return render(request, 'records/pd_device.html', context)
 
