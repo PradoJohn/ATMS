@@ -4,9 +4,9 @@
 {% block content %}    
 
 <div class="row d-flex justify-content-center">
-    <h5 class="card-header text-center">
+    <h2 class="card-header text-center">
         Historical Records
-    </h5>
+    </h2>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
         <a href = "{% url 'gps_records' %}" class="btn btn-outline-success" for="btnradio1">GPS Sensor</a>
@@ -24,38 +24,31 @@
 <hr>
 <div class="row d-flex justify-content-center">
     <div class="card col-xxl-6 col-sm-12">
-       
-        <div class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
-            <div class="col-xl-4">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Select a GPS Sensor</option>
-                    <option value="1">GPS 1</option>
-                    <option value="2">GPS 2</option>
-                    <option value="3">GPS 3</option>
-                  </select>
-            </div>
-            
-        </div>
+        <h5 class="card-header text-white d-flex justify-content-center" style="background-color: rgb(2, 63, 26);">
+            ALL GPS Devices Historical Records
+        </h5>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-                    <th>
+                    <thead>
                         <tr>
-                            <td>GPSID</td>
-                            <td>Latitude</td>
-                            <td>Longitude</td>
-                            <td>Speed</td>
-                            <td>DATE/TIME</td>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>GPS Name</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Speed</th>
                         </tr>
-                    </th>
+                    </thead>
 
-                    {% for device in gps_information %}
+                    {% for gps in gps_coordinate %}
                     <tr>
-                        <td>{{ device.gpsdevice }}</td>
-                        <td>{{ device.latitude }}</td>
-                        <td>{{ device.longitude }}</td>
-                        <td>{{ device.speed }}</td>
-                        <td>{{ device.date_created }}</td>
+                        <td>{{ gps.date }}</td>
+                        <td>{{ gps.time }}</td>
+                        <td>{{ gps.gpsdevice }}</td>
+                        <td>{{ gps.latitude }}</td>
+                        <td>{{ gps.longitude }}</td>
+                        <td>{{ gps.speed }}</td>
 
                     </tr>
                     {% endfor %}

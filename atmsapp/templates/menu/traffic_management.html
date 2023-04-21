@@ -11,21 +11,20 @@
     </h2>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <a href = "{% url 'traffic_management' %}" class="btn btn-outline-success" for="btnradio1">Version 1</a>
+        <a href = "{% url 'traffic_management' %}" class="btn btn-outline-success" for="btnradio1">Unprocessed Data Visualization</a>
       
         <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <a href = "{% url 'traffic_management2' %}" class="btn btn-outline-success" for="btnradio2">Version 2</a>
+        <a href = "{% url 'traffic_management2' %}" class="btn btn-outline-success" for="btnradio2">Processed Data Visualization</a>
     </div>
     
 
     <div class="card-body">
-        <h5 class="card-title">ATMS Team is here to serve.</h5>
+        <h5 class="card-title">Here we let you visualize GPS devices collected data.</h5>
         <p>
             There are two version of Traffic Management Service, click the buttons above or the link 
             of desired version.<br>
-            <a href="{% url 'traffic_management' %}">Version 1</a> views and manages information about the gps sensors, including the paramaters it collects,
-            whereabouts, and mulfunctioned gps sensors. <br>
-            <a href="{% url 'traffic_management2' %}">Version 2</a> views summarize information of gathered data processed by by the system.
+            <a href="{% url 'traffic_management' %}">Version 1</a> displays unprocessed information. <br>
+            <a href="{% url 'traffic_management2' %}">Version 2</a> displays processed information. <br>
         </p>
         
     </div>
@@ -51,7 +50,7 @@
                 <tbody>
                   {% for gps in coordinates %}
                   <tr>
-                    <th scope="row">{{gps.date}} </th>
+                    <td>{{gps.date}} </td>
                     <td>{{gps.time}}</td>
                     <td>{{gps.gpsdevice}}</td>
                     <td>{{gps.longitude}}</td>
@@ -71,26 +70,18 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>GPS ID</th>
-                    <th>Vehicle Operator</th>
-                    <th>Operator Contact</th>
+                    <th>GPS Name</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">11</th>
-                    <td>Mark</td>
-                    <td>09561723922</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>09526426865</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td >Larry the Bird</td>
-                    <td>09526465465</td>
+                    {% for gps in gps_device %}
+                    <tr>
+                      <td>{{gps.name}} </td>
+                      <td>{{gps.status}}</td>
+                    </tr>
+                    {% endfor %}
                   </tr>
                 </tbody>
               </table>
@@ -108,21 +99,21 @@
                 <thead>
                   <tr>
                     <th >GPS Name</th>
+                    <th >Operator</th>
                     <th >Vehicle Plate</th>
-                    <th >Vehicle Operator</th>
                     <th >Operator Contact</th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-
-                    <th scope="row">11</th>
-                    <td>NGL 7688</td>
-                    <td>Otto</td>
-                    <td>09561723922</td>
-                  </tr>
-                  
+                  {% for operator in operator %}
+                    <tr>
+                      <td>{{operator.gps}} </td>
+                      <td>{{operator.operator}} </td>
+                      <td>{{operator.plate_number}} </td>
+                      <td>{{operator.contact}}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
         </div>
@@ -134,26 +125,22 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th >GPS ID</th>
-                    <th >Serial No.</th>
-                    <th >Month/Year</th>
-                    <th >Operating?</th>
+                    <th >GPS name</th>
+                    <th >ID</th>
+                    <th >IMEI</th>
+                    <th >Model</th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">11</th>
-                    <td>NGL 3234217688</td>
-                    <td>November 2019</td>
-                    <td>YES</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12</th>
-                    <td>AXS 3234217688</td>
-                    <td>November 2019</td>
-                    <td>NO</td>
-                  </tr>
+                  {% for gps in gps_device %}
+                    <tr>
+                      <td>{{gps.name}} </td>
+                      <td>{{gps.id}} </td>
+                      <td>{{gps.imei}} </td>
+                      <td>{{gps.model}}</td>
+                    </tr>
+                  {% endfor %}
                   
                 </tbody>
               </table>

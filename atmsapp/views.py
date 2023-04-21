@@ -17,13 +17,21 @@ def dashboard(request):
 
 def traffic_management(request):
   coordinates = GPSCoordinate.objects.all()
+  gps_device = GPSDevice.objects.filter(status='Malfunctioned')
+  operator = GPSOperator.objects.all()
   context = {
      'coordinates': coordinates,
+     'gps_device': gps_device,
+     'operator': operator,
   }
   return render(request, 'menu/traffic_management.html', context)
 
 def traffic_management2(request):
-  return render(request, 'menu/traffic_management2.html', {})
+  gps_device = GPSDevice.objects.all()
+  context = {
+    'gps_device': gps_device,
+  }
+  return render(request, 'menu/traffic_management2.html', context)
 
 def pollution_management(request):
   pollution_data = PollutionData.objects.all()
@@ -99,11 +107,19 @@ def vehicle(request):
   return render(request, 'records/vehicle.html', context)
 
 def gps_records(request):
-  return render(request, 'records/gps_records.html', {})
+  gps_coordinate = GPSCoordinate.objects.all()
+  context = {
+    'gps_coordinate': gps_coordinate,
+  }
+  return render(request, 'records/gps_records.html', context)
 
 
 def pollution_records(request):
-  return render(request, 'records/pollution_records.html', {})
+  p_data = PollutionData.objects.all()
+  context ={
+    'p_data': p_data,
+  }
+  return render(request, 'records/pollution_records.html', context)
 
 
 def about_us(request):
