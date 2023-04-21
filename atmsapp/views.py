@@ -85,8 +85,18 @@ def update_gps(request, pk):
   return render(request, 'records/add_gps_form.html', {})
 
 def gps_operator(request):
-  
-  return render(request, 'menu/gps_operator.html', {})
+  operator = GPSOperator.objects.all()
+  context = {
+    'operator': operator,
+  }
+  return render(request, 'records/gps_operator.html', context)
+
+def vehicle(request):
+  vehicle = Vehicle.objects.all()
+  context = {
+    'vehicle': vehicle,
+  }
+  return render(request, 'records/vehicle.html', context)
 
 def gps_records(request):
   return render(request, 'records/gps_records.html', {})

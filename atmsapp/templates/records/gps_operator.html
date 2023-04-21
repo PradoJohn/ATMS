@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}    
+
+<div class="row d-flex justify-content-center">
+    <h2 class="card-header text-center">
+        GPS Devices Handlers
+    </h2>
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <a href = "{% url 'gps_operator' %}" class="btn btn-outline-success" for="btnradio1">GPS Operators</a>
+      
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <a href = "{% url 'vehicle' %}" class="btn btn-outline-success" for="btnradio2">GPS Vehicles</a>
+    </div>
+    <div class="card-body">
+        <p>
+            This page handles information of GPS Devices Handlers of the GPS Sensor Devices and Pollution Detector Devices.
+        </p>
+    </div>
+</div>
+<hr>
+<div class="row d-flex justify-content-center">
+    <div class="card col-xxl-8 col-sm-12">
+        <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: rgb(105, 114, 27);"> <h3>GPS Devices Operators</h3>
+            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Handler</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th>GPS Name</th>
+                            <th>Vehicle Operator</th>
+                            <th>Vehicle Plate</th>
+                            <th>Operator Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for operator in operator %}
+                        <tr>
+                            <td>{{ operator.gps }}</td>
+                            <td>{{ operator.plate_number }}</td>
+                            <td>{{ operator.operator }}</td>
+                            <td>{{ operator.contact }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %} 

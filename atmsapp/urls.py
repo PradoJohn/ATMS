@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_gps/', views.add_gps, name = 'add_gps'),
     path('update_gps/', views.update_gps, name = 'update_gps'),
     path('gps_operator/', views.gps_operator, name = 'gps_operator'),
+    path('vehicle/', views.vehicle, name = 'vehicle'),
     path('gps_records/', views.gps_records, name = 'gps_records'),
     path('pollution_records/', views.pollution_records, name = 'pollution_records'),
     path('user/', views.user, name = 'user'),
