@@ -31,28 +31,29 @@
             <table class="table table-striped ">
                 <thead>
                   <tr>
-                    <th >Air Sensor ID</th>
+                    <th >Date/Time</th>
+                    <th >Sensor Name</th>
                     <th >PM</th>
                     <th >Gaseous</th>
                     <th >Meteorological</th>
                     <th >Other pollutants</th>
                     <th >Location</th>
-                    <th >Date/Time</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
 
-                    <!-- {% for detector in pollution_data %}
+                    {% for pd in pollution_data %}
                     <tr>
-                        <td>{{ detector.pollution_detector }}</td>
-                        <td>{{ detector.pm }}</td>
-                        <td>{{ detector.gaseous }}</td>
-                        <td>{{ detector.meteorological }}</td>
-                        <td>{{ detector.other_pollutants }}</td>
-                        <td>{{ detector.location }}</td>
-                        <td>{{ detector.date_created }}</td>
+                        <th scope="row">{{pd.date_created}} </th>
+                        <td>{{ pd.p_sensor }}</td>
+                        <td>{{ pd.pm }}</td>
+                        <td>{{ pd.gaseous }}</td>
+                        <td>{{ pd.meteorological }}</td>
+                        <td>{{ pd.other_pollutants }}</td>
+                        <td>{{ pd.location }}</td>
                     </tr>
-                    {% endfor %} -->
+                    {% endfor %}
                 
                 </tbody>
               </table>

@@ -17,14 +17,37 @@
 <div class="row d-flex justify-content-center">
     <div class="card col-xl-2 col-sm-6">
         <div class="card-body d-flex justify-content-center">
-            {{total_gps_devices}}
+            <h3>{{ total_gps }}</h3>
         </div>
-        <div class="card-footer d-flex justify-content-center">
+        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(40, 27, 114);">
             Total GPS Devices
         </div>
     </div>
-
-
+    <div class="card col-xl-2 col-sm-6">
+        <div class="card-body d-flex justify-content-center">
+            <h3>{{deployed_gps}}</h3>
+        </div>
+        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(40, 27, 114);">
+            Total Deployed
+        </div>
+    </div>
+    <div class="card col-xl-2 col-sm-6">
+        <div class="card-body d-flex justify-content-center">
+            <h3>{{total_pd}}</h3>
+        </div>
+        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(4, 92, 104);">
+            Total Pollution Devices
+        </div>
+    </div>
+    <div class="card col-xl-2 col-sm-6">
+        <div class="card-body d-flex justify-content-center">
+            <h3>{{deployed_pd}}</h3>
+        </div>
+        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(4, 92, 104);">
+            Total Deployed
+        </div>
+    </div>
+    
 </div>
 <div class="row">
     <div class="card col-xxl-6 col-sm-12">
@@ -34,15 +57,30 @@
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-                    <th>
+                    <thead>
                         <tr>
-                            <td>GPSID</td>
-                            <td>Name</td>
-                            <td>IMEI</td>
-                            <td>Product Model</td>
-                            <td>Status</td>
+                            <th></th>
+                            <th>Name</th>
+                            <th>IMEI</th>
+                            <th>Product Model</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
-                    </th>
+                    </thead>
+                    <tbody>
+                        {% for gps in gps %}
+                            <tr>
+                                <td><a href="{% url 'gps' gps.id %}" class="btn btn-sm btn-info bg-transparent">View</a></td>
+                                <td>{{ gps.name }}</td>
+                                <td>{{ gps.imei }}</td>
+                                <td>{{ gps.model }}</td>
+                                <td>{{ gps.status }}</td>
+                                <td><a href="" class="btn btn-sm btn-info">Update</a></td>
+                                <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                     
                 </table>
             </div>
@@ -56,21 +94,30 @@
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-                    <th>
-                        <tr>
-                            <td>Detector Name</td>
-                            <td>Product</td>
-                            <td>Description</td>
-                            <td>Status</td>
-                        </tr>
-                    </th>
-                    <!-- {% for detector in pollution_detector %}
+                <thead>
                     <tr>
-                        <td>{{ detector.pd_name }}</td>
-                        <td>{{ detector.product_model }}</td>
-                        <td>{{ detector.description }}</td>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Pollution Sensor</th>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
-                    {% endfor %} -->
+                </thead>
+                {% for pd in pollution_device %}
+                <tr>
+                    <td><a href="" class="btn btn-sm btn-info bg-transparent">View</a></td>
+                    <td>{{ pd.id }}</td>
+                    <td>{{ pd.name }}</td>
+                    <td>{{ pd.product_model }}</td>
+                    <td>{{ pd.description }}</td>
+                    <td>{{ pd.status }}</td>
+                    <td><a href="" class="btn btn-sm btn-info">Update</a></td>
+                    <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
                 </table>
             </div>
         </div>

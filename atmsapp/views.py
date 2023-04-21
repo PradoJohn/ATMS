@@ -26,19 +26,50 @@ def traffic_management2(request):
   return render(request, 'menu/traffic_management2.html', {})
 
 def pollution_management(request):
-  
-  return render(request, 'menu/pollution_management.html', {})
+  pollution_data = PollutionData.objects.all()
+  pollution_device = PollutionSensor.objects.all()
+  context = {
+    'pollution_data': pollution_data,
+    'pollution_device' : pollution_device,
+    }
+  return render(request, 'menu/pollution_management.html', context)
 
 def devices(request):
-  return render(request, 'menu/devices.html', {})
+  gps = GPSDevice.objects.all()
+  pollution_device = PollutionSensor.objects.all()
+
+  total_gps = gps.count()
+  total_pd = pollution_device.count()
+  deployed_gps = gps.filter(status='Deployed').count()
+  deployed_pd = pollution_device.filter(status='Deployed').count()
+  context = {
+    'gps': gps,
+    'pollution_device': pollution_device,
+    'total_gps': total_gps,
+    'total_pd': total_pd,
+    'deployed_gps': deployed_gps,
+    'deployed_pd': deployed_pd,
+
+  }
+  return render(request, 'menu/devices.html', context)
 
 def gps_device(request, pk):
-  
-  return render(request, 'records/gps_device.html', {})
+  gps_device = GPSDevice.objects.get(id=pk)
+  gps_coordinate = gps_device.gpscoordinate_set.all()
+  context = {
+     'gps_device': gps_device,
+     'gps_coordinate': gps_coordinate,
+  }
+  return render(request, 'records/gps_device.html', context)
 
 def pollution_device(request, pk):
-  
-  return render(request, 'records/pd_device.html', {})
+  pollution_device = PollutionSensor.objects.get(id=pk)
+  pd_data = pollution_device.pollutiondata_set.all()
+  context = {
+     'pollution_device': pollution_device,
+     'pd_data': pd_data,
+  }
+  return render(request, 'records/pd_device.html', context)
 
 
 def add_gps(request):
