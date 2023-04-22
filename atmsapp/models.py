@@ -59,7 +59,7 @@ class PollutionSensor(models.Model):
   status = models.CharField(max_length=255, null=True, choices=STATUS, default='Standby')
 
   def __str__(self):
-      return self.plate
+      return self.name
 
 class PollutionData(models.Model):
   p_sensor = models.ForeignKey(PollutionSensor, null=True, on_delete=models.CASCADE)
