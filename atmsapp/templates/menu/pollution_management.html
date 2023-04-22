@@ -38,11 +38,16 @@
                     <th >Meteorological</th>
                     <th >Other pollutants</th>
                     <th >Location</th>
+<<<<<<< HEAD
                     
+=======
+                    <th >Date/Time</th>
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                   </tr>
                 </thead>
                 <tbody>
 
+<<<<<<< HEAD
                     {% for pd in pollution_data %}
                     <tr>
                         <td>{{pd.date_created}} </td>
@@ -52,6 +57,17 @@
                         <td>{{ pd.meteorological }}</td>
                         <td>{{ pd.other_pollutants }}</td>
                         <td>{{ pd.location }}</td>
+=======
+                    {% for detector in pollution_information %}
+                    <tr>
+                        <td>{{ detector.pollution_detector }}</td>
+                        <td>{{ detector.pm }}</td>
+                        <td>{{ detector.gaseous }}</td>
+                        <td>{{ detector.meteorological }}</td>
+                        <td>{{ detector.other_pollutants }}</td>
+                        <td>{{ detector.location }}</td>
+                        <td>{{ detector.date_created }}</td>
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                     </tr>
                     {% endfor %}
                 

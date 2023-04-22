@@ -34,6 +34,7 @@ var myLineChart = new Chart(ctxL, {
   }
 });
 
+
 var ctxSc = document.getElementById('scatterChart').getContext('2d');
   var scatterData = {
     datasets: [{
@@ -136,6 +137,9 @@ var ctxSc = document.getElementById('scatterChart').getContext('2d');
       }]
     }]
   }
+
+
+
 
   var config1 = new Chart.Scatter(ctxSc, {
     data: scatterData,

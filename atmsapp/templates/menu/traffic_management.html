@@ -45,6 +45,7 @@
                     <th >Longitude</th>
                     <th >Latitude</th>
                     <th >Speed (Kph)</th>
+<<<<<<< HEAD
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,22 @@
                     <td>{{gps.speed}}</td>
                   </tr>
                   {% endfor %}
+=======
+                    <th >Date/Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for gps_information in gps_information %}
+                    <tr>
+                        <td>{{ gps_information.gpsdevice }}</td>
+                        <td>{{ gps_information.latitude }}</td>
+                        <td>{{ gps_information.longitude }}</td>
+                        <td>{{ gps_information.speed }}</td>
+                        <td>{{ gps_information.date_created }}</td>
+
+                    </tr>
+                    {% endfor %}
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                 </tbody>
               </table>
             </div>

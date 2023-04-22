@@ -8,7 +8,11 @@
         Historical Records
     </h2>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+<<<<<<< HEAD
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+=======
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
         <a href = "{% url 'gps_records' %}" class="btn btn-outline-success" for="btnradio1">GPS Sensor</a>
       
         <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
@@ -16,14 +20,20 @@
     </div>
     <div class="card-body">
         <p>
+<<<<<<< HEAD
             Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
             GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+=======
+         The set of the data shown below are GPS's Historical Information.
+         
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
         </p>
     </div>
 </div>
 <hr>
 <div class="row d-flex justify-content-center">
     <div class="card col-xxl-6 col-sm-12">
+<<<<<<< HEAD
         <h5 class="card-header text-white d-flex justify-content-center" style="background-color: rgb(2, 63, 26);">
             ALL GPS Devices Historical Records
         </h5>
@@ -49,6 +59,32 @@
                         <td>{{ gps.latitude }}</td>
                         <td>{{ gps.longitude }}</td>
                         <td>{{ gps.speed }}</td>
+=======
+       
+        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+            Collected GPS Sensors Information
+        </h4>
+        <div class="card-body">
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <th>
+                        <tr>
+                            <td>GPSID</td>
+                            <td>Latitude</td>
+                            <td>Longitude</td>
+                            <td>Speed</td>
+                            <td>DATE/TIME</td>
+                        </tr>
+                    </th>
+
+                    {% for device in gps_information %}
+                    <tr>
+                        <td>{{ device.gpsdevice }}</td>
+                        <td>{{ device.latitude }}</td>
+                        <td>{{ device.longitude }}</td>
+                        <td>{{ device.speed }}</td>
+                        <td>{{ device.date_created }}</td>
+>>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
 
                     </tr>
                     {% endfor %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block content %}    
+
+<div class="row d-flex justify-content-center">
+    <h2 class="card-header text-center">
+       GPS Historical Records
+    </h2>
+    
+    <div class="card-body">
+        <p>
+            Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
+            GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+        </p>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
+        <div class="card col-xl-2 col-sm-12">
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);" >
+                Status
+            </h5>
+            <h3 class="card-body d-flex justify-content-center ">
+                {{ gps_device.status }}
+            </h3>
+        </div>
+    
+        <div class="card col-xl-2 col-sm-12">
+            <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+                Device Info
+            </h5>
+            <div class="card-body d-flex justify-content-center">
+                <p>
+                    IMEI: {{ gps_device.IMEI_number }} <br>
+    
+                    Product Model: {{ gps_device.product_model }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="card col-xxl-6 col-sm-12">
+       
+        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(10, 107, 107);">
+            {{gps_device}} Historical Information
+        </h4>
+        <div class="card-body">
+            <div class="table-responsive table-responsive-sm">
+                <table class="table table-striped ">
+                    <th>
+                        <tr>
+                            <td>GPSID</td>
+                            <td>Latitude</td>
+                            <td>Longitude</td>
+                            <td>Speed</td>
+                            <td>DATE/TIME</td>
+                        </tr>
+                    </th>
+
+                    {% for gps_information in gps_information %}
+                    <tr>
+                        <td>{{ gps_information.gpsdevice }}</td>
+                        <td>{{ gps_information.latitude }}</td>
+                        <td>{{ gps_information.longitude }}</td>
+                        <td>{{ gps_information.speed }}</td>
+                        <td>{{ gps_information.date_created }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %} 
