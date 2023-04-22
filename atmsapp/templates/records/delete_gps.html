@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row d-flex justify-content-center">
+        
+        
+        <div class="card col-lg-6">
+            <div class="card-body">
+                <h5>Are you sure you want to delete {{gps_device}}?</h5>
+                <form action="{% url 'delete_gps' gps_device.id %}" method="POST">
+                    {% csrf_token %}
+                    
+                    <input class ="btn btn-danger" type="submit" name="Confirm">
+                    <a class="btn btn-warning" href="{% url 'devices' %}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

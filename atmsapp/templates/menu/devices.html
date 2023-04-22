@@ -12,41 +12,7 @@
         </p>
     </div>
 </div>
-<div class="row d-flex justify-content-center">
-    <div class="card col-xl-2 col-sm-6">
-        <div class="card-body d-flex justify-content-center">
-            <h3>{{ total_gps_devices }}</h3>
-        </div>
-        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(40, 27, 114);">
-            Total GPS Devices
-        </div>
-    </div>
-    <div class="card col-xl-2 col-sm-6">
-        <div class="card-body d-flex justify-content-center">
-            <h3>{{deployed_gps}}</h3>
-        </div>
-        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(40, 27, 114);">
-            Total Deployed
-        </div>
-    </div>
-    <div class="card col-xl-2 col-sm-6">
-        <div class="card-body d-flex justify-content-center">
-            <h3>{{total_pollution_devices}}</h3>
-        </div>
-        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(4, 92, 104);">
-            Total Pollution Devices
-        </div>
-    </div>
-    <div class="card col-xl-2 col-sm-6">
-        <div class="card-body d-flex justify-content-center">
-            <h3>{{deployed__pollution_device}}</h3>
-        </div>
-        <div class="card-footer d-flex justify-content-center text-white" style="background-color: rgb(4, 92, 104);">
-            Total Deployed
-        </div>
-    </div>
-    
-</div>
+
 <hr>
 <div class="row d-flex justify-content-center">
     <div class="card col-xl-2 col-sm-6">
@@ -86,7 +52,7 @@
 <div class="row">
     <div class="card col-xxl-6 col-sm-12">
         <div class="card-header text-white d-flex justify-content-between" style="background-color: rgb(40, 27, 114);"> <h3>GPS Sensor Devices</h3>
-            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Device</a>
+            <a href="{% url 'add_gps' %}" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Device</a>
         </div>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
@@ -94,6 +60,7 @@
                     <thead>
                         <tr>
                             <th></th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>IMEI</th>
                             <th>Product Model</th>
@@ -106,12 +73,13 @@
                         {% for gps in gps %}
                             <tr>
                                 <td><a href="{% url 'gps' gps.id %}" class="btn btn-sm btn-info bg-transparent">View</a></td>
+                                <td>{{ gps.id }}</td>
                                 <td>{{ gps.name }}</td>
                                 <td>{{ gps.imei }}</td>
                                 <td>{{ gps.model }}</td>
                                 <td>{{ gps.status }}</td>
-                                <td><a href="" class="btn btn-sm btn-info">Update</a></td>
-                                <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>
+                                <td><a href="{% url 'update_gps' gps.id %}" class="btn btn-sm btn-info">Update</a></td>
+                                <td><a href="{% url 'delete_gps' gps.id %}" class="btn btn-sm btn-danger">Delete</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

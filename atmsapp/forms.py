@@ -3,5 +3,5 @@ from .models import *
 
 class GPSForm(ModelForm):
     class Meta:
-        model = GPSCoordinate
+        model = GPSDevice
         fields = '__all__'

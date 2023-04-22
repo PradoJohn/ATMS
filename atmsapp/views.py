@@ -83,14 +83,44 @@ def pollution_device(request, pk):
   }
   return render(request, 'records/pd_device.html', context)
 
+# ----START of GPS CRUD----
 
 def add_gps(request):
-
-  return render(request, 'records/add_gps_form.html', {})
+  form = GPSForm
+  if request.method == 'POST':
+    form = GPSForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('devices')
+  context = {
+    'form': form,
+  }
+  return render(request, 'records/add_gps_form.html', context)
 
 def update_gps(request, pk):
-  
-  return render(request, 'records/add_gps_form.html', {})
+  gps_device = GPSDevice.objects.get(id=pk)
+  form = GPSForm(instance=gps_device)
+  if request.method == 'POST':
+    form = GPSForm(request.POST, instance=gps_device)
+    if form.is_valid():
+      form.save()
+      return redirect('devices')
+  context ={
+    'form': form,
+  }
+  return render(request, 'records/add_gps_form.html', context)
+
+def delete_gps(request, pk):
+  gps_device = GPSDevice.objects.get(id=pk)
+  if request.method == 'POST':
+    gps_device.delete()
+    return redirect('devices')
+  context ={
+    'gps_device': gps_device,
+  }
+  return render(request, 'records/delete_gps.html', context)
+
+# ------END OF GPS CRUD -----
 
 def gps_operator(request):
   operator = GPSOperator.objects.all()
