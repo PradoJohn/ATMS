@@ -93,7 +93,6 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-<<<<<<< HEAD
                             <th></th>
                             <th>Name</th>
                             <th>IMEI</th>
@@ -117,36 +116,6 @@
                         {% endfor %}
                     </tbody>
                     
-=======
-                            <td></td>
-                            <td>GPSID</td>
-                            <td>Name</td>
-                            <td>IMEI</td>
-                            <td>Product Model</td>
-                            <td>Network</td>
-                            <td>SIM Number</td>
-                            <td>Description</td>
-                            <td>Status</td>
-                            <td>Update</td>
-                            <td>Delete</td>
-                        </tr>
-                    </th>
-                    {% for gps_device in gps_device %}
-                    <tr>
-                        <td><a href="{% url 'gps_device' gps_device.id  %}" class="btn btn-sm btn-info">View</a></td>
-                        <td>{{ gps_device.id }}</td>
-                        <td>{{ gps_device.name }}</td>
-                        <td>{{ gps_device.IMEI_number }}</td>
-                        <td>{{ gps_device.product_model }}</td>
-                        <td>{{ gps_device.network }}</td>
-                        <td>{{ gps_device.SIM_number }}</td>
-                        <td>{{ gps_device.main_function }}</td>
-                        <td>{{ gps_device.status }}</td>
-                        <td><a href="#" class="btn btn-sm btn-success">Update</a></td>
-                        <td><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
-                    </tr>
-                    {% endfor %}
->>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                 </table>
             </div>
         </div>
@@ -159,7 +128,6 @@
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
-<<<<<<< HEAD
                 <thead>
                     <tr>
                         <th></th>
@@ -170,28 +138,6 @@
                         <th>Status</th>
                         <th>Update</th>
                         <th>Delete</th>
-=======
-                    <th>
-                        <tr>
-                            <td></td>
-                            <td>Detector Name</td>
-                            <td>Product</td>
-                            <td>Description</td>
-                            <td>Status</td>
-                            <td>Update</td>
-                            <td>Delete</td>
-                        </tr>
-                    </th>
-                    {% for pollution_device in pollution_device %}
-                    <tr>
-                        <td><a href="{% url 'pollution_device' pollution_device.id  %}" class="btn btn-sm btn-info">View</a></td>
-                        <td>{{ pollution_device.name }}</td>
-                        <td>{{ pollution_device.product_model }}</td>
-                        <td>{{ pollution_device.description }}</td>
-                        <td>{{ pollution_device.status }}</td>
-                        <td><a href="#" class="btn btn-sm btn-success">Update</a></td>
-                        <td><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
->>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                     </tr>
                 </thead>
                 {% for pd in pollution_device %}

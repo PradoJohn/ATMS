@@ -23,16 +23,9 @@
 <div class="row d-flex justify-content-center">
     <div class="card col-8">
        
-<<<<<<< HEAD
         <h5 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(2, 63, 26);">
             Air Pollution Historical Records
         </h5>
-=======
-        <h4 class="card-header d-flex justify-content-center text-white" style="background-color: rgb(14, 90, 4);">
-            Collected Pollution Detectors Information
-            
-        </h4>
->>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
@@ -60,20 +53,6 @@
                             <td>{{ pdata.other_pollutants }}</td>
                             <td>{{ pdata.location }}</td>
                         </tr>
-<<<<<<< HEAD
-=======
-                    </th>
-                    {% for detector in pollution_information %}
-                    <tr>
-                        <td>{{ detector.pollution_detector }}</td>
-                        <td>{{ detector.pm }}</td>
-                        <td>{{ detector.gaseous }}</td>
-                        <td>{{ detector.meteorological }}</td>
-                        <td>{{ detector.other_pollutants }}</td>
-                        <td>{{ detector.location }}</td>
-                        <td>{{ detector.date_created }}</td>
-                    </tr>
->>>>>>> 0231ed4ec1bd231adbb02455cd6d61efe0e65cea
                     {% endfor %}
                     </tbody>
                 </table>
