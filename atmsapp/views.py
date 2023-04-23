@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.forms import inlineformset_factory
 from .models import *
 from .forms import *
-
+from django.db.models import Prefetch
 
 def index(request):
   return render(request, 'menu/home.html', {})
@@ -29,10 +29,17 @@ def traffic_management(request):
   return render(request, 'menu/traffic_management.html', context)
 
 def traffic_management2(request):
-  gps_device = GPSDevice.objects.all()
+  gps_devices = GPSDevice.objects.all()
+  gps_last_coordinate = {}
+
+  for gps in gps_devices:
+      last_coordinate = gps.gpscoordinate_set.last()
+      gps_last_coordinate[gps] = last_coordinate
+
   context = {
-    'gps_device': gps_device,
-  }
+    
+    'gps_last_coordinate': gps_last_coordinate,
+    }
   return render(request, 'menu/traffic_management2.html', context)
 
 def pollution_management(request):
