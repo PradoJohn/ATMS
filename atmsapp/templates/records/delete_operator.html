@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="row d-flex justify-content-center">
-    <h2 class="card-header text-center">Sensor Devices</h2>
+    <h2 class="card-header text-center">GPS Operator</h2>
 </div>
     <div class="row d-flex justify-content-center">
         
@@ -11,11 +11,11 @@
         <div class="card col-lg-6">
             <div class="card-body">
                 <h5>Are you sure you want to delete {{gps_device}}?</h5>
-                <form action="{% url 'delete_gps' gps_device.id %}" method="POST">
+                <form action="{% url 'delete_operator' operator.id %}" method="POST">
                     {% csrf_token %}
                     
-                    <input class ="btn btn-danger" type="submit" name="Confirm">
-                    <a class="btn btn-warning" href="{% url 'devices' %}">Cancel</a>
+                    <input class ="btn btn-danger" type="submit" name="Submit">
+                    <a class="btn btn-warning" href="{% url 'gps_operator' %}">Cancel</a>
                 </form>
             </div>
         </div>

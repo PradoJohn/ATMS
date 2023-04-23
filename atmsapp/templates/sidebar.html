@@ -31,8 +31,6 @@
 
         <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                 class="fa fa-home me-2"></i>Home</a>
-        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                class="fas fa-border-all me-2" aria-hidden="true"></i>Dashboard</a>
         
         <a href="{% url 'traffic_management' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fas fa-project-diagram me-2"></i>Traffic Management</a>
@@ -41,10 +39,10 @@
                 class="fas fa-chart-line me-2"></i>Pollution Management</a>
 
         <a href="{% url 'devices' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                class="far fa-hdd me-2"></i>Sensor Devices</a>
+                class="far fa-hdd me-2"></i>Sensor Devices Management</a>
 
         <a href="{% url 'gps_operator' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                class="far fa-address-card me-2"></i>GPS Operators</a>
+                class="far fa-address-card me-2"></i>GPS Operators Management</a>
                 
         <a href="{% url 'gps_records' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fas fa-paperclip me-2"></i>Historical Records</a>
@@ -54,7 +52,10 @@
 
         <a href="{% url 'contact_us' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fa fa-phone me-2"></i>Contact Us</a>
-        
+
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                class="fas fa-border-all me-2" aria-hidden="true"></i>Extended Feature</a> 
+
         <a href="{% url 'login' %}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                 class="fas fa-power-off me-2"></i>Logout</a>
     </div>

@@ -4,21 +4,23 @@
 {% block content %}
 
 <div class="row d-flex justify-content-center">
-    <h2 class="card-header text-center">Sensor Devices</h2>
+    <h2 class="card-header text-center">
+        GPS Operators
+    </h2>
 </div>
 
 <div class="row d-flex justify-content-center">
     
     
     <div class="card col-xl-8">
-        <h5 class="card-header text-center">Add GPS Device</h5>
+        <h5 class="card-header text-center">Add Operator</h5>
         <div class="card-body ">
             <form action="" method="POST">
                 {% csrf_token %}
                 <b>{{form}}</b>
                 
                 <input class ="btn btn-success" type="submit" name="Submit">
-                <a class="btn btn-warning" href="{% url 'devices' %}">Cancel</a>
+                <a class="btn btn-warning" href="{% url 'gps_operator' %}">Cancel</a>
             </form>
         </div>
     </div>

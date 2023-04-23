@@ -83,6 +83,20 @@ def pollution_device(request, pk):
   }
   return render(request, 'records/pd_device.html', context)
 
+# Add dummy Real-time Data Samples
+def add_coordinate(request):
+  form = CoordinateForm
+  if request.method == 'POST':
+    form = CoordinateForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('traffic_management')
+  context = {
+    'form': form,
+  }
+  return render(request, 'records/add_coordinate.html', context)
+
+
 # ----START of GPS CRUD----
 
 def add_gps(request):
@@ -122,6 +136,7 @@ def delete_gps(request, pk):
 
 # ------END OF GPS CRUD -----
 
+# ---Start of Operator CRUD---
 def gps_operator(request):
   operator = GPSOperator.objects.all()
   context = {
@@ -129,12 +144,88 @@ def gps_operator(request):
   }
   return render(request, 'records/gps_operator.html', context)
 
+def add_operator(request):
+  form = OperatorForm
+  if request.method == 'POST':
+    form = OperatorForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('gps_operator')
+  context = {
+    'form': form,
+  }
+  return render(request, 'records/add_operator_form.html', context)
+
+def update_operator(request, pk):
+  operator = GPSOperator.objects.get(id=pk)
+  form = OperatorForm(instance=operator)
+  if request.method == 'POST':
+    form = OperatorForm(request.POST, instance=operator)
+    if form.is_valid():
+      form.save()
+      return redirect('gps_operator')
+  context ={
+    'form': form,
+  }
+  return render(request, 'records/add_operator_form.html', context)
+
+def delete_operator(request, pk):
+  operator = GPSOperator.objects.get(id=pk)
+  if request.method == 'POST':
+    operator.delete()
+    return redirect('gps_operator')
+  context ={
+    'operator': operator,
+  }
+  return render(request, 'records/delete_operator.html', context)
+
+#  ---End of Operator and Vehicle CRUD---
+
+# ---Start of Vehicle CRUD---
 def vehicle(request):
   vehicle = Vehicle.objects.all()
   context = {
     'vehicle': vehicle,
   }
   return render(request, 'records/vehicle.html', context)
+
+def add_vehicle(request):
+  form = VehicleForm
+  if request.method == 'POST':
+    form = VehicleForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('vehicle')
+  context = {
+    'form': form,
+  }
+  return render(request, 'records/add_vehicle_form.html', context)
+
+def update_vehicle(request, pk):
+  vehicle = Vehicle.objects.get(id=pk)
+  form = VehicleForm(instance=vehicle)
+  if request.method == 'POST':
+    form = VehicleForm(request.POST, instance=vehicle)
+    if form.is_valid():
+      form.save()
+      return redirect('vehicle')
+  context ={
+    'form': form,
+  }
+  return render(request, 'records/add_vehicle_form.html', context)
+
+def delete_vehicle(request, pk):
+  vehicle = Vehicle.objects.get(id=pk)
+  if request.method == 'POST':
+    vehicle.delete()
+    return redirect('vehicle')
+  context ={
+    'vehicle': vehicle,
+  }
+  return render(request, 'records/delete_vehicle.html', context)
+
+# ---End of Vehicle CRUD---
+
 
 def gps_records(request):
   gps_coordinate = GPSCoordinate.objects.all()

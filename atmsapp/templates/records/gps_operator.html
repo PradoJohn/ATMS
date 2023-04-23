@@ -16,11 +16,7 @@
     </div>
     <div class="card-body">
         <p>
-            Here we can view, add and delete a GPS operator.<br>
-            Including the following: <br>
-            1. GPS Device <br>
-            2. Operator <br>
-            3. Vehicle Plate Number
+            Here you can create, update, view and delete a GPS operator.<br>
         </p>
     </div>
 </div>
@@ -28,26 +24,31 @@
 <div class="row d-flex justify-content-center">
     <div class="card col-xxl-8 col-sm-12">
         <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: rgb(105, 114, 27);"> <h3>GPS Devices Operators</h3>
-            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Handler</a>
+            <a href="{% url 'add_operator' %}" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Operator</a>
         </div>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
                     <thead>
                         <tr>
+                            <th>Update</th>
                             <th>GPS Name</th>
                             <th>Vehicle Operator</th>
                             <th>Vehicle Plate</th>
                             <th>Operator Contact</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for operator in operator %}
                         <tr>
+                            <td><a href="{% url 'update_operator' operator.id %}" class="btn btn-sm btn-info">Update</a></td>
                             <td>{{ operator.gps }}</td>
                             <td>{{ operator.plate_number }}</td>
                             <td>{{ operator.operator }}</td>
                             <td>{{ operator.contact }}</td>
+                            <td><a href="{% url 'delete_operator' operator.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+                            
                         </tr>
                     {% endfor %}
                     </tbody>

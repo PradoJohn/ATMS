@@ -4,13 +4,18 @@
 {% block content %}    
 
 <div class="row d-flex justify-content-center">
-    <h2 class="card-header text-center">
-       Air Pollution Device Historical Records
-    </h2>
+    <div class="card-header text-center">
+        <a href="{% url 'devices' %}" style="text-decoration-line: none; color: black;">
+            <h2 class="align-items-center">
+                <i class="fas fa-arrow-left me-2 fs-4"></i>
+                Sensor Devices
+
+            </h2> 
+        </a>
+    </div>
     <div class="card-body">
         <p>
-            Each GPS sensor collected data shall be gathered and recorded in the system. Historical information can be view in this page.<br>
-            GPS sensors collect three parameters including longitude, latitude, and speed. Time and date are also displayed.
+            In this page, you can view all the information of a  Air Quality Sensor. <br>
         </p>
     </div>
 </div>

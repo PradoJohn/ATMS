@@ -5,7 +5,7 @@
 
 <div class="row d-flex justify-content-center">
     <h2 class="card-header text-center">
-        GPS Devices Handlers
+       Vehicles
     </h2>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
@@ -16,9 +16,7 @@
     </div>
     <div class="card-body">
         <p>
-            GPS Devices needed a vehicle that constantly roam around the city,
-            like buses, jeepneys, or local drivers. <br>
-            Here we can view, add and delete a vehicle information to be use.
+            Here you can create, update, view and delete a GPS Vehicle that links to a GPS operator and GPS Devices.<br>
                 
         </p>
     </div>
@@ -28,21 +26,25 @@
     
     <div class="card col-xxl-7 col-sm-12">
         <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: rgb(104, 5, 124);"> <h3>Vehicles</h3>
-            <a href="#" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Vehicle</a>
+            <a href="{% url 'add_vehicle' %}" class="btn btn-primary btn-lg bg-transparent" tabindex="-1" role="button" aria-disabled="false">Add Vehicle</a>
         </div>
         <div class="card-body">
             <div class="table-responsive table-responsive-sm">
                 <table class="table table-striped ">
                     <thead>
                         <tr>
+                            <th>Update</th>
                             <th>Vehicle Plate</th>
                             <th>Vehicle Description</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     {% for vehicle in vehicle %}
                     <tr>
+                        <td><a href="{% url 'update_vehicle' vehicle.id %}" class="btn btn-sm btn-info">Update</a></td>
                         <td>{{ vehicle.plate_no }}</td>
-                        <td>{{ vehicle.description }}</td>               
+                        <td>{{ vehicle.description }}</td>
+                        <td><a href="{% url 'delete_vehicle' vehicle.id %}" class="btn btn-sm btn-danger">Delete</a></td>               
                     </tr>
                     {% endfor %}
                 </table>
