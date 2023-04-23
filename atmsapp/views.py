@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+
+from django.forms import inlineformset_factory
 from .models import *
 from .forms import *
 
@@ -16,7 +18,7 @@ def dashboard(request):
   return render(request, 'menu/dashboard.html', {})
 
 def traffic_management(request):
-  coordinates = GPSCoordinate.objects.all()
+  coordinates = GPSCoordinate.objects.order_by('-id')[:5]
   gps_device = GPSDevice.objects.filter(status='Malfunctioned')
   operator = GPSOperator.objects.all()
   context = {
@@ -91,9 +93,7 @@ def add_coordinate(request):
     if form.is_valid():
       form.save()
       return redirect('traffic_management')
-  context = {
-    'form': form,
-  }
+  context = {'form': form}
   return render(request, 'records/add_coordinate.html', context)
 
 

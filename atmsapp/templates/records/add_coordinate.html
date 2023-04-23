@@ -9,12 +9,13 @@
 
 <div class="row d-flex justify-content-center">
     <div class="card col-xl-10">
-        <h5 class="card-header text-center">Add Coordinates</h5>
+        <h5 class="card-header">Add Coordinates</h5>
         <div class="card-body ">
             <form action="" method="POST">
                 {% csrf_token %}
+
                 <b>{{form}}</b>
-                
+
                 <input class ="btn btn-success" type="submit" name="Submit">
                 <a class="btn btn-warning" href="{% url 'traffic_management' %}">Cancel</a>
             </form>
