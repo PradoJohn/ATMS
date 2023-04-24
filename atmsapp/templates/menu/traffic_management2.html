@@ -33,7 +33,7 @@
                 <p>
                     Traffic is deteremined by card color.
                 </p>
-                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor Mulfunctioned</p><br>
+                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor on Standby or Mulfunctioned</p><br>
                 <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p><br>
                 <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p><br>
                 <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p><br>
@@ -49,55 +49,52 @@
         </div>
     </div>
     
-    <style>
-        .card-1 {
-            background: linear-gradient(to right, #505152, #b6b7b8) !important;
-            color: #fff;
-        }
-
-        .card-2 {
-            background: linear-gradient(to right, #0a5027, #38ef7d) !important;
-            color: #fff;
-        }
-
-        .card-3 {
-            
-            background: linear-gradient(to right, #646604, #e3f70a) !important;
-            color: #fff;
-        }
-
-        .card-4 {
-            background: linear-gradient(to right, #693205, #ffba56) !important;
-            color: #fff;
-        }
-
-        .card-5 {
-            background: linear-gradient(to right, #63223b, rgb(255, 0, 0)) !important;
-            color: #fff;
-        }
-    </style>
     <div class="row d-flex justify-content-center">
         {% for gps, last_coordinate in gps_last_coordinate.items %}
-        
-        <div class="col-xxl-2 col-lg-3 col-sm-6">
-            <div class="card card-{{number}}" >
-                <div class="card-statistic-3 p-4">
+            {% if gps.status == 'Standby' or gps.status == 'Malfunctioned'  %}
+            <div class="col-xxl-2 col-lg-3 col-sm-6">
+                <div class="card card-1" >
+                    <div class="card-statistic-3 p-4">
 
-                    <h5 class="card-title mb-4">{{ gps.name }}</h5>
+                        <h5 class="card-title mb-4">{{ gps.name }} </h5>
 
-                    <div class="row justify-content-between align-items-center mb-2">
-                        <div class="col-6">
-                            <p class="d-flex align-items-center mb-0">
-                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <span> {{last_coordinate.speed }} Kph<i class="fa fa-arrow-up"></i></span>
+                        <div class="row justify-content-between align-items-center mb-2">
+                            <div class="col-6">
+                                <p class="d-flex align-items-center mb-0">
+                                    {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <span> {{last_coordinate.speed }} Kph<i class="fa fa-arrow-up"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            {% elif gps.status == 'Deployed'%}
+
+                <div class="col-xxl-2 col-lg-3 col-sm-6">
+                    <div class="card card-2" >
+                        <div class="card-statistic-3 p-4">
+
+                            <h5 class="card-title mb-4">{{ gps.name }} </h5>
+
+                            <div class="row justify-content-between align-items-center mb-2">
+                                <div class="col-6">
+                                    <p class="d-flex align-items-center mb-0">
+                                        {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <span> {{last_coordinate.speed }} Kph<i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            {% endif %}
+        
     
         {% endfor %}
 
