@@ -26,7 +26,27 @@
             <a href="{% url 'traffic_management' %}">Version 1</a> displays unprocessed information. <br>
             <a href="{% url 'traffic_management2' %}">Version 2</a> displays processed information. <br>
         </p>
-        
+        <p class="text-danger">
+          Notes: <br> 
+          1. GPS Sensors are not yet linked to this website, therefore real-time data will not work. <br> 
+        </p>
+        <p>
+          However let say the GPS devices are deployed. Please follow the instructions provided to optimize your experience. <br> 
+          Instructions: <br> 
+          1. You can add Dummy data in this page. <br> 
+          2. When Adding a data, you are required to input the following information: <br> 
+          ---Choose a GPS Device <br> 
+          ---Latitude: 00.0000 <br> 
+          ---Longitude: 00.0000 <br> 
+          ---Speed: 0 and above (GPS Speed is Kph) <br> 
+          ---Choose a Road Type <br> 
+          Then click Submit. <br> 
+          3. You should be able to see the information you entered above the list in the Real-time Data Table. <br> 
+          4. This table presents data collected from GPS Devices.  <br> 
+          5. You are in the unprocessed data page. Click the button above to go to the processed Data. <br>
+          6. If you want to add another GPS Device, go to the sidebar navigation menu and click 'Sensor Devices Management'. <br>
+          7. If you want to add another GPS Operator or Sample Vehicle, go to the sidebar navigation menu and click 'GPS Operators Management'. <br> 
+        </p>
     </div>
     
 </div>
@@ -122,7 +142,7 @@
     </div>
 
     <div class="card col-lg-5 text-center">
-        <h5 class="card-header text-white" style="background-color: rgb(5, 99, 99);">GPS Sensor Device Information</h5>
+        <h5 class="card-header text-white" style="background-color: rgb(73, 72, 72);">Malfunctioned GPS Information</h5>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
