@@ -48,12 +48,39 @@
             <div class="card-footer"><p style="font-size: small;">Example Reading: According to the chart, there are 15 GPS sensors highlighted in red, indicating that 15 vehicles are currently facing severe traffic conditions.</p></div>
         </div>
     </div>
+    
+    <style>
+        .card-1 {
+            background: linear-gradient(to right, #505152, #b6b7b8) !important;
+            color: #fff;
+        }
 
+        .card-2 {
+            background: linear-gradient(to right, #0a5027, #38ef7d) !important;
+            color: #fff;
+        }
+
+        .card-3 {
+            
+            background: linear-gradient(to right, #646604, #e3f70a) !important;
+            color: #fff;
+        }
+
+        .card-4 {
+            background: linear-gradient(to right, #693205, #ffba56) !important;
+            color: #fff;
+        }
+
+        .card-5 {
+            background: linear-gradient(to right, #63223b, rgb(255, 0, 0)) !important;
+            color: #fff;
+        }
+    </style>
     <div class="row d-flex justify-content-center">
         {% for gps, last_coordinate in gps_last_coordinate.items %}
         
         <div class="col-xxl-2 col-lg-3 col-sm-6">
-            <div class="card" id="my-card" >
+            <div class="card card-{{number}}" >
                 <div class="card-statistic-3 p-4">
 
                     <h5 class="card-title mb-4">{{ gps.name }}</h5>

@@ -31,13 +31,12 @@ def traffic_management(request):
 def traffic_management2(request):
   gps_devices = GPSDevice.objects.all()
   gps_last_coordinate = {}
-
+  number = 5
   for gps in gps_devices:
       last_coordinate = gps.gpscoordinate_set.last()
       gps_last_coordinate[gps] = last_coordinate
-
   context = {
-    
+    'number': number,
     'gps_last_coordinate': gps_last_coordinate,
     }
   return render(request, 'menu/traffic_management2.html', context)
