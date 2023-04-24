@@ -31,13 +31,15 @@
             <h5 class="card-header text-white text-center" style="background-color: rgb(1, 77, 14);">GPS Sensor Coloration Indicator</h5>
             <div class="card-body">
                 <p>
-                    Traffic is deteremined by card color.
+                    <b>Traffic is deteremined by card color.</b>
                 </p>
-                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor on Standby or Mulfunctioned</p><br>
-                <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p><br>
-                <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p><br>
-                <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p><br>
-                <p class="l-bg-cherry ps-1 mb-0">Extreme Traffic</p><br>
+                <p class="l-bg-grey-dark ps-1 mb-0">GPS Sensor on Standby or Mulfunctioned</p>
+                <p class="l-bg-green-dark ps-1 mb-0">Normal Flow of Traffic</p>
+                <p class="l-bg-yellow-dark ps-1 mb-0">Light Traffic </p>
+                <p class="l-bg-orange-dark ps-1 mb-0">Traffic</p>
+                <p class="l-bg-cherry ps-1 mb-0">Extreme Traffic</p>
+
+
             </div>
         </div>
         <div class="card col-lg-5">   
@@ -65,34 +67,228 @@
                                 </p>
                             </div>
                             <div class="col-6">
-                                <span> {{last_coordinate.speed }} Kph<i class="fa fa-arrow-up"></i></span>
+                                <span> {{last_coordinate.speed }} Kph</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             {% elif gps.status == 'Deployed'%}
-
-                <div class="col-xxl-2 col-lg-3 col-sm-6">
-                    <div class="card card-2" >
-                        <div class="card-statistic-3 p-4">
-
-                            <h5 class="card-title mb-4">{{ gps.name }} </h5>
-
-                            <div class="row justify-content-between align-items-center mb-2">
-                                <div class="col-6">
-                                    <p class="d-flex align-items-center mb-0">
-                                        {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
-                                    </p>
+                <!-- IF a GPS is in Deployed Status, There are 4 different card coloration involve. -->
+                <!-- This section is for Local Street Logicl -->
+                {% if last_coordinate.road_type == 1 %}
+                    {% if last_coordinate.speed >= ten %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-2" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <span> {{last_coordinate.speed }} Kph<i class="fa fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        {% elif last_coordinate.speed > zero %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-3" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% elif last_coordinate.speed == zero %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-4" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End of Local Street Logic -->
+                <!-- Start of Arterial Road type logic -->
+                {% elif last_coordinate.road_type == 2 %}
+                    {% if last_coordinate.speed >= twentyfive %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-2" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif last_coordinate.speed >= 15 %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-4" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% elif last_coordinate.speed >= zero %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-5" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End of Arterial Road Type Logic -->
+                <!-- Start of Highway Road Type Logicl -->
+                {% elif last_coordinate.road_type == 3 %}
+                    {% if last_coordinate.speed >= thirtyfive %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-2" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif last_coordinate.speed >= twenty %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-3" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif last_coordinate.speed >= ten %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-4" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif last_coordinate.speed >= zero %}
+                        <div class="col-xxl-2 col-lg-3 col-sm-6">
+                            <div class="card card-5" >
+                                <div class="card-statistic-3 p-4">
+                                    <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                    <div class="row justify-content-between align-items-center mb-2">
+                                        <div class="col-6">
+                                            <p class="d-flex align-items-center mb-0">
+                                                {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <span> {{ last_coordinate.speed}} Kph</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-xxl-2 col-lg-3 col-sm-6">
+                        <div class="card card-1" >
+                            <div class="card-statistic-3 p-4">
+                                <h5 class="card-title mb-4">{{ gps.name }} </h5>
+                                <div class="row justify-content-between align-items-center mb-2">
+                                    <div class="col-6">
+                                        <p class="d-flex align-items-center mb-0">
+                                            {{last_coordinate.latitude }} | {{last_coordinate.longitude }}
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <span> {{ last_coordinate.speed}} Kph</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        
+                <!-- End of Highway RoadType Logic -->
+                {% endif %}
+                <!-- End of GPS Deployed Status -->
             {% endif %}
         
     

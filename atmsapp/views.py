@@ -33,13 +33,26 @@ def traffic_management(request):
 def traffic_management2(request):
   gps_devices = GPSDevice.objects.all()
   gps_last_coordinate = {}
-
+  
   for gps in gps_devices:
       last_coordinate = gps.gpscoordinate_set.last()
       gps_last_coordinate[gps] = last_coordinate
 
+  thirtyfive = 35
+  twentyfive = 25
+  twenty = 20
+  fifteen = 15
+  ten = 10
+  zero = 0
   context = {
     'gps_last_coordinate': gps_last_coordinate,
+    'zero': zero,
+    'ten': ten,
+    'fifteen': fifteen,
+    'twenty': twenty,
+    'twentyfive': twentyfive,
+    'thirtyfive': thirtyfive,
+
     }
   return render(request, 'menu/traffic_management2.html', context)
 

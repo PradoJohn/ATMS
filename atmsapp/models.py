@@ -20,7 +20,13 @@ class GPSCoordinate(models.Model):
   gpsdevice = models.ForeignKey(GPSDevice, null=True, on_delete=models.CASCADE)
   latitude = models.FloatField(null=True)
   longitude = models.FloatField(null=True)
-  speed = models.CharField(max_length=255)
+  speed = models.IntegerField(null=True)
+  ROAD_TYPE = (
+        (1, 'Local Street'),
+        (2, 'Arterial'),
+        (3, 'Highway'),
+    )
+  road_type = models.IntegerField(choices=ROAD_TYPE, null=True)
   date = models.DateField(auto_now_add=True, null=True)
   time = models.TimeField(auto_now_add=True, null=True)
 
